@@ -4,14 +4,49 @@ import { useState } from "react"
 import { AnimateIn } from "./animate-in"
 import { LighthouseIcon } from "./lighthouse-icon"
 
+const LOOPS_FORM_URL =
+  "https://app.loops.so/api/newsletter-form/cmlwtvrr749sw0iylt5k387od"
+
 export function ComingSoon() {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (email.trim()) {
-      setSubmitted(true)
+    if (!email.trim()) return
+
+    const now = Date.now()
+    const prev = localStorage.getItem("loops-form-timestamp")
+    if (prev && Number(prev) + 60000 > now) {
+      setError("Too many signups, please try again in a moment.")
+      return
+    }
+    localStorage.setItem("loops-form-timestamp", String(now))
+
+    setLoading(true)
+    setError("")
+
+    try {
+      const res = await fetch(LOOPS_FORM_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `userGroup=&mailingLists=&email=${encodeURIComponent(email)}`,
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        const data = await res.json()
+        setError(data.message || "Something went wrong. Please try again.")
+        localStorage.setItem("loops-form-timestamp", "")
+      }
+    } catch {
+      setError("Something went wrong. Please try again.")
+      localStorage.setItem("loops-form-timestamp", "")
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -58,29 +93,36 @@ export function ComingSoon() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-soft-gold/50 sm:bg-card-surface sm:p-1.5 sm:shadow-sm"
-              >
-                <label htmlFor="waitlist-email" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="waitlist-email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
-                  className="h-12 flex-1 rounded-full border border-soft-gold/50 bg-card-surface px-5 text-base text-dark-slate placeholder:text-warm-secondary/40 focus:outline-none focus:ring-2 focus:ring-warm-orange/30 sm:border-0 sm:bg-transparent sm:shadow-none sm:focus:ring-0"
-                />
-                <button
-                  type="submit"
-                  className="h-12 rounded-full bg-warm-orange px-8 text-sm font-medium text-card-surface transition-colors hover:bg-warm-orange-hover active:scale-[0.98]"
+              <>
+                <form
+                  onSubmit={handleSubmit}
+                  className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-soft-gold/50 sm:bg-card-surface sm:p-1.5 sm:shadow-sm"
                 >
-                  Join the waitlist
-                </button>
-              </form>
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email"
+                    disabled={loading}
+                    className="h-12 flex-1 rounded-full border border-soft-gold/50 bg-card-surface px-5 text-base text-dark-slate placeholder:text-warm-secondary/40 focus:outline-none focus:ring-2 focus:ring-warm-orange/30 sm:border-0 sm:bg-transparent sm:shadow-none sm:focus:ring-0 disabled:opacity-50"
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="h-12 rounded-full bg-warm-orange px-8 text-sm font-medium text-card-surface transition-colors hover:bg-warm-orange-hover active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {loading ? "Joining…" : "Join the waitlist"}
+                  </button>
+                </form>
+                {error && (
+                  <p className="mt-3 text-sm text-red-500">{error}</p>
+                )}
+              </>
             )}
           </AnimateIn>
 
