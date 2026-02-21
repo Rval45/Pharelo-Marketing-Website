@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+
+  --color-background: #F8F7F3;
+  --color-foreground: #451A03;
+  --color-card: #FFFCF9;
+  --color-card-foreground: #451A03;
+  --color-popover: #FFFCF9;
+  --color-popover-foreground: #451A03;
+  --color-primary: #E07A2B;
+  --color-primary-foreground: #FFFCF9;
+  --color-secondary: #5B9A8B;
+  --color-secondary-foreground: #FFFCF9;
+  --color-muted: #F0F4F8;
+  --color-muted-foreground: #92400E;
+  --color-accent: #F0F4F8;
+  --color-accent-foreground: #0F172A;
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.577 0.245 27.325);
+  --color-border: rgba(254, 215, 170, 0.4);
+  --color-input: rgba(254, 215, 170, 0.6);
+  --color-ring: #E07A2B;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  --color-warm-bronze: #451A03;
+  --color-warm-secondary: #92400E;
+  --color-warm-orange: #E07A2B;
+  --color-warm-orange-hover: #C96A1F;
+  --color-dark-slate: #2C2438;
+  --color-teal: #5B9A8B;
+  --color-teal-muted: rgba(91, 154, 139, 0.08);
+  --color-soft-gold: #FED7AA;
+  --color-ice-blue: #F0F4F8;
+  --color-cream: #F8F7F3;
+  --color-card-surface: #FFFCF9;
+  --color-footer-bg: #F0EDE6;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-up-slow: fade-up-slow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.6s ease both;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up-slow {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes beacon-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-beacon-pulse {
+  animation: beacon-pulse 3s ease-in-out infinite;
+}
+
+/* Ensure animation fill-mode wins over utility opacity */
+.animate-fade-up,
+.animate-fade-up-slow,
+.animate-fade-in,
+.animate-scale-in {
+  animation-fill-mode: both !important;
+}
+
+/* Chat bubble staggered entrance */
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-chat-in {
+  animation: chat-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Typing indicator dots */
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
+}
+
+.animate-typing-dot-1 { animation: typing-dot 1.4s ease-in-out infinite; }
+.animate-typing-dot-2 { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
+.animate-typing-dot-3 { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
+
+/* Spotlight section: animatable custom property */
+@property --spot-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* Warm glow on active thought <em> elements */
+.thought-active em {
+  text-shadow:
+    0 0 20px rgba(224, 122, 43, 0.35),
+    0 0 40px rgba(224, 122, 43, 0.15);
+}
+
+/* Light burst animation for reveal */
+@keyframes light-burst {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
