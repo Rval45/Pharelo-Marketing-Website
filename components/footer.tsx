@@ -30,7 +30,7 @@ export function Footer() {
             Support
           </Link>
           <a
-            href="mailto:support@pharelo.com"
+            href="mailto:team@pharelo.com"
             className="transition-colors hover:text-warm-secondary"
           >
             Contact
