@@ -1,13 +1,11 @@
 "use client"
 
-import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 
 export function Hero() {
   return (
     <section className="relative px-6 pt-12 pb-10 md:pt-16 md:pb-14 lg:pt-20 lg:pb-16 md:px-12">
-      <div className="relative mx-auto max-w-6xl grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-center">
-        {/* Left -- copy */}
+      <div className="relative mx-auto max-w-6xl">
         <div className="flex flex-col gap-5 md:gap-6">
           <span className="inline-block text-sm tracking-widest uppercase text-warm-secondary/50 font-sans md:text-base">
             For the people holding it all together
@@ -18,24 +16,18 @@ export function Hero() {
             <span className="text-warm-orange">head.</span>
           </h1>
 
-          <p className="max-w-xl text-base md:text-lg leading-relaxed text-warm-secondary">
+          <p className="text-base md:text-lg leading-relaxed text-warm-secondary">
             Pharelo helps you prepare for medical visits, stay present during them, and make sure nothing important goes unsaid.
           </p>
+
+          <a
+            href="#waitlist"
+            className="self-center inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange/90 transition-colors duration-200"
+          >
+            Join the waitlist <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        {/* Right -- lighthouse illustration (desktop only) */}
-        <div className="hidden lg:block relative">
-          <div className="relative w-full" style={{ aspectRatio: "1408/736" }}>
-            <Image
-              src="/images/Pharelo-Hero-Image.webp"
-              alt=""
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-          </div>
-        </div>
       </div>
 
       {/* Scroll indicator */}

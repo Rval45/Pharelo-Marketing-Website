@@ -51,7 +51,7 @@ export function ComingSoon() {
   }
 
   return (
-    <section className="relative px-6 py-28 md:py-40 md:px-12 overflow-hidden">
+    <section id="waitlist" className="relative px-6 py-28 md:py-40 md:px-12 overflow-hidden">
       {/* Subtle lighthouse watermark */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
         <LighthouseIcon

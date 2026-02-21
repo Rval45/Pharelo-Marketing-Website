@@ -71,9 +71,17 @@ export function WhoItsFor() {
         </ul>
 
         <AnimateIn delay={650}>
-          <p className="mt-14 font-serif text-2xl leading-snug text-warm-orange md:text-3xl tracking-tight text-center text-balance">
-            If any of this sounds familiar, Pharelo is being built for you.
-          </p>
+          <div className="mt-14 flex flex-col items-center gap-6">
+            <p className="font-serif text-2xl leading-snug text-warm-orange md:text-3xl tracking-tight text-center text-balance">
+              If any of this sounds familiar, Pharelo is being built for you.
+            </p>
+            <a
+              href="#waitlist"
+              className="inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange/90 transition-colors duration-200"
+            >
+              Join the waitlist <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </AnimateIn>
       </div>
     </section>

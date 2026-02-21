@@ -76,14 +76,17 @@ export function Header() {
             Pharelo
           </span>
         </Link>
-        <span
+        <a
+          href="#waitlist"
           className={cn(
-            "text-xs tracking-wide uppercase font-sans transition-colors duration-400 ease-out",
-            overDark ? "text-cream/35" : "text-warm-secondary/40"
+            "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
+            overDark
+              ? "bg-teal text-dark-slate hover:bg-teal/90"
+              : "bg-warm-orange text-white hover:bg-warm-orange/90"
           )}
         >
-          Coming soon
-        </span>
+          Get early access <span aria-hidden="true">→</span>
+        </a>
       </div>
     </header>
   )
