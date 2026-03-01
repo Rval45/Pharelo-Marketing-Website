@@ -117,19 +117,19 @@ export function MeetBeacon() {
                 key={i}
                 from={msg.from}
                 text={msg.text}
-                delay={200 + i * 200}
+                delay={300 + i * 500}
               />
             ))}
 
             {/* Typing indicator */}
-            <AnimateIn delay={200 + conversation.length * 200} className="flex justify-start">
+            <AnimateIn delay={300 + conversation.length * 500} className="flex justify-start">
               <div className="bg-white/[0.05] rounded-2xl rounded-bl-md">
                 <TypingIndicator />
               </div>
             </AnimateIn>
 
             {/* Disclaimer */}
-            <AnimateIn delay={200 + (conversation.length + 1) * 200}>
+            <AnimateIn delay={300 + (conversation.length + 1) * 500}>
               <p className="mt-4 text-xs text-cream/25 text-center lg:text-left">
                 This is a preview of how Beacon guides you&mdash;not a real conversation.
               </p>

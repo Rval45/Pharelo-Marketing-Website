@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react"
 export function Hero() {
   return (
     <section className="relative px-6 pt-12 pb-10 md:pt-16 md:pb-14 lg:pt-20 lg:pb-16 md:px-12">
+      <div className="absolute inset-0 hero-ambient-bg pointer-events-none" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl">
         <div className="flex flex-col gap-5 md:gap-6 items-center text-center">
           <span className="inline-block text-sm tracking-widest uppercase text-warm-secondary/50 font-sans md:text-base">
@@ -22,9 +23,9 @@ export function Hero() {
 
           <a
             href="#waitlist"
-            className="self-center inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange/90 transition-colors duration-200"
+            className="group self-center inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange-hover hover:scale-[1.03] hover:shadow-lg hover:shadow-warm-orange/25 active:scale-[0.98] transition-all duration-200"
           >
-            Join the waitlist <span aria-hidden="true">→</span>
+            Join the waitlist <span className="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
           </a>
         </div>
 

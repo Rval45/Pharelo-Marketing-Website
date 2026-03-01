@@ -79,13 +79,13 @@ export function Header() {
         <a
           href="#waitlist"
           className={cn(
-            "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
+            "group inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]",
             overDark
-              ? "bg-teal text-dark-slate hover:bg-teal/90"
-              : "bg-warm-orange text-white hover:bg-warm-orange/90"
+              ? "bg-teal text-dark-slate hover:bg-teal/85 hover:shadow-md hover:shadow-teal/20"
+              : "bg-warm-orange text-white hover:bg-warm-orange-hover hover:shadow-md hover:shadow-warm-orange/20"
           )}
         >
-          Get early access <span aria-hidden="true">→</span>
+          Get early access <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>
         </a>
       </div>
     </header>

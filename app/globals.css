@@ -177,3 +177,69 @@
     opacity: 0;
   }
 }
+
+/* Waitlist success state animations */
+@keyframes success-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes checkmark-draw {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes border-pulse {
+  0% { border-color: rgba(91, 154, 139, 0.2); }
+  50% { border-color: rgba(91, 154, 139, 0.45); }
+  100% { border-color: rgba(91, 154, 139, 0.2); }
+}
+
+.animate-success-entrance {
+  animation: success-entrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-checkmark-draw {
+  animation: checkmark-draw 0.4s ease-out 0.3s both;
+}
+
+.animate-border-pulse {
+  animation: border-pulse 2s ease-in-out 0.5s both;
+}
+
+/* Hero ambient background */
+@keyframes hero-gradient-drift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.hero-ambient-bg {
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(224, 122, 43, 0.04) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 60% 60%, rgba(254, 215, 170, 0.03) 0%, transparent 70%);
+  background-size: 200% 200%;
+  animation: hero-gradient-drift 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambient-bg {
+    animation: none;
+  }
+  .animate-success-entrance {
+    animation: none;
+    opacity: 1;
+  }
+  .animate-checkmark-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .animate-border-pulse {
+    animation: none;
+  }
+}

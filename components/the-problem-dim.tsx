@@ -303,6 +303,17 @@ export function TheProblemDim() {
           </p>
         </div>
       </div>
+
+      {/* Gradient bridge to next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 md:h-32 z-20 pointer-events-none"
+        style={{
+          background: isRevealed ? "linear-gradient(to bottom, transparent, #F8F7F3)" : "none",
+          opacity: isRevealed ? 1 : 0,
+          transition: `opacity ${dur ?? "1.2s"} ease`,
+        }}
+        aria-hidden="true"
+      />
     </section>
   )
 }

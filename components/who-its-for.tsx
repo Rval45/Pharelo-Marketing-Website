@@ -37,13 +37,13 @@ export function WhoItsFor() {
           </h2>
         </AnimateIn>
 
-        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 list-none" role="list">
+        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 list-none" role="list">
           {personas.map((persona, i) => (
             <AnimateIn
               key={i}
               delay={120 * (i + 1)}
               as="li"
-              className={i === personas.length - 1 && personas.length % 2 !== 0 ? "sm:col-span-2 sm:mx-auto sm:max-w-[calc(50%-1rem)]" : ""}
+              className=""
             >
               <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card-surface border border-soft-gold/20 transition-shadow duration-300 hover:shadow-lg hover:shadow-warm-orange/5">
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -77,9 +77,9 @@ export function WhoItsFor() {
             </p>
             <a
               href="#waitlist"
-              className="inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange/90 transition-colors duration-200"
+              className="group inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange-hover hover:scale-[1.03] hover:shadow-lg hover:shadow-warm-orange/25 active:scale-[0.98] transition-all duration-200"
             >
-              Join the waitlist <span aria-hidden="true">→</span>
+              Join the waitlist <span className="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
             </a>
           </div>
         </AnimateIn>

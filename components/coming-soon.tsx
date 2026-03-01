@@ -84,11 +84,17 @@ export function ComingSoon() {
 
           <AnimateIn delay={300}>
             {submitted ? (
-              <div className="mt-10 rounded-2xl border border-teal/20 bg-teal-muted px-6 py-6">
-                <p className="font-serif text-xl text-teal">
-                  You{"\u2019"}re on the list.
-                </p>
-                <p className="mt-1.5 text-sm text-warm-secondary">
+              <div className="mt-10 rounded-2xl border border-teal/20 bg-teal-muted px-6 py-6 animate-success-entrance animate-border-pulse">
+                <div className="flex items-center gap-3">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" className="shrink-0">
+                    <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.5" className="text-teal/20" />
+                    <path d="M9 14.5l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal animate-checkmark-draw" style={{ strokeDasharray: 24, strokeDashoffset: 24 }} />
+                  </svg>
+                  <p className="font-serif text-xl text-teal">
+                    You{"\u2019"}re on the list.
+                  </p>
+                </div>
+                <p className="mt-1.5 text-sm text-warm-secondary ml-[40px]">
                   We{"\u2019"}ll be in touch when it{"\u2019"}s time.
                 </p>
               </div>
