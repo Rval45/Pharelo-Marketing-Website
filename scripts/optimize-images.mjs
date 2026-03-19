@@ -16,7 +16,11 @@ const TARGETS = {
 }
 
 async function optimize() {
-  const files = await readdir(SOURCE_DIR)
+  const files = await readdir(SOURCE_DIR).catch(() => null)
+  if (!files) {
+    console.log('images-src/ not found, skipping optimization (WebP files already committed).')
+    return
+  }
   const pngs = files.filter((f) => extname(f).toLowerCase() === '.png')
 
   for (const file of pngs) {
