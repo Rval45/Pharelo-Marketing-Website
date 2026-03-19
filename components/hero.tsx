@@ -1,8 +1,5 @@
 import { WaitlistForm } from './waitlist-form'
-import { HeroVariantA } from './hero-variant-a'
-import { HeroVariantB } from './hero-variant-b'
-import { HeroVariantC } from './hero-variant-c'
-import { HeroSwitcher } from './hero-switcher'
+import { HeroVariantA, HeroVariantACompact } from './hero-variant-a'
 
 export function Hero() {
   return (
@@ -11,7 +8,7 @@ export function Hero() {
       <div className="absolute inset-0 hero-gradient pointer-events-none" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-[1400px] w-full px-6 md:px-12 py-24 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Content */}
           <div className="flex flex-col gap-8 max-w-xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-foreground">
@@ -28,41 +25,14 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — Variant switcher (desktop) */}
+          {/* Right — Photo + floating cards (desktop) */}
           <div className="hidden lg:flex items-center justify-center">
-            <HeroSwitcher>
-              {/* Variant A: Layered Paper Depth */}
-              <div className="relative">
-                <div
-                  className="absolute -inset-12 rounded-full opacity-30 blur-3xl pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.1) 0%, transparent 70%)' }}
-                  aria-hidden="true"
-                />
-                <HeroVariantA />
-              </div>
-
-              {/* Variant B: Kinetic Typography */}
-              <div className="relative flex items-center">
-                <HeroVariantB />
-              </div>
-
-              {/* Variant C: Signal Rings */}
-              <div className="relative">
-                <div
-                  className="absolute -inset-8 rounded-full opacity-20 blur-3xl pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.1) 0%, transparent 70%)' }}
-                  aria-hidden="true"
-                />
-                <HeroVariantC />
-              </div>
-            </HeroSwitcher>
+            <HeroVariantA />
           </div>
 
-          {/* Mobile — show Variant A only (most compact) */}
-          <div className="lg:hidden flex justify-center -mt-2">
-            <div className="w-[280px] scale-[0.8] origin-top">
-              <HeroVariantA />
-            </div>
+          {/* Mobile — compact photo + card */}
+          <div className="lg:hidden">
+            <HeroVariantACompact />
           </div>
         </div>
       </div>
