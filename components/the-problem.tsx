@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ScrollReveal } from './scroll-reveal'
 
 const scenarios = [
@@ -9,8 +10,26 @@ const scenarios = [
 
 export function TheProblem() {
   return (
-    <section className="px-6 md:px-12 py-32 md:py-44">
-      <div className="mx-auto max-w-[1400px]">
+    <section className="relative px-6 md:px-12 py-32 md:py-44 overflow-hidden">
+      {/* Background photo — desaturated, faded into cream */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <Image
+          src="/images/waiting-room.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Heavy cream overlay — photo barely peeks through */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(245,240,232,0.88) 0%, rgba(245,240,232,0.8) 50%, rgba(245,240,232,0.92) 100%)',
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-[1400px]">
         <div className="md:grid md:grid-cols-[1fr_1.8fr] md:gap-16 lg:gap-24">
           {/* Left — anchor phrase */}
           <ScrollReveal>
@@ -27,7 +46,7 @@ export function TheProblem() {
                 className="reveal stagger"
                 style={{ '--index': i } as React.CSSProperties}
               >
-                <div className="py-8 md:py-10 border-t border-border">
+                <div className="py-8 md:py-10 border-t border-foreground/[0.06]">
                   <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-muted">
                     {text}
                   </p>

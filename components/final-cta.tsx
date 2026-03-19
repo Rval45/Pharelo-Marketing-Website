@@ -1,12 +1,34 @@
+import Image from 'next/image'
 import { ScrollReveal } from './scroll-reveal'
 import { WaitlistForm } from './waitlist-form'
 
 export function FinalCTA() {
   return (
-    <section id="waitlist" className="relative px-6 md:px-12 py-32 md:py-48">
+    <section id="waitlist" className="relative px-6 md:px-12 py-32 md:py-48 overflow-hidden">
+      {/* Background photo — couple walking into light */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <Image
+          src="/images/walking-out.png"
+          alt=""
+          fill
+          className="object-cover object-top"
+          sizes="100vw"
+        />
+        {/* Heavy cream overlay — photo is a whisper behind the text */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(245,240,232,0.85) 0%, rgba(245,240,232,0.78) 40%, rgba(245,240,232,0.9) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Warm gold gradient accent */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, rgba(201,162,39,0.03))' }}
+        style={{
+          background: 'linear-gradient(to bottom, transparent 40%, rgba(201,162,39,0.03) 100%)',
+        }}
         aria-hidden="true"
       />
 
