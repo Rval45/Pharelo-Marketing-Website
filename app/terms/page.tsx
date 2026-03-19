@@ -18,7 +18,7 @@ const sections = [
   {
     title: "Description of service",
     content:
-      "Pharelo is a mobile application designed to help caregivers prepare for, document, and follow up on medical appointments. The app provides organizational tools, AI-assisted question preparation, and appointment summaries.",
+      "Pharelo is a mobile application designed to help you prepare for, document, and follow up on medical appointments. The app provides organizational tools, AI-assisted question preparation, and appointment summaries.",
   },
   {
     title: "Medical disclaimer",

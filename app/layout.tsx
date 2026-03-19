@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -8,10 +8,16 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+})
+
 export const metadata: Metadata = {
-  title: 'Pharelo — Appointment prep for caregivers',
+  title: 'Pharelo — Appointment prep that actually works',
   description:
-    'Pharelo helps caregivers organize their thoughts, capture what matters during medical visits, and walk away with clarity.',
+    'Pharelo helps you organize your thoughts, capture what matters during medical visits, and walk away with clarity.',
   icons: {
     icon: [
       {
@@ -43,7 +49,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-background">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${instrumentSerif.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

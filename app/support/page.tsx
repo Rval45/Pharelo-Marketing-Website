@@ -69,7 +69,7 @@ export default function SupportPage() {
               </h1>
             </div>
             <p className="text-sm leading-relaxed text-warm-secondary max-w-lg">
-              Pharelo helps caregivers prepare for medical appointments with confidence.
+              Pharelo helps you prepare for medical appointments with confidence.
               If you need help with your account, have a technical issue, billing question,
               or just want to share feedback, we&apos;re here for you.
             </p>

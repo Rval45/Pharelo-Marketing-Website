@@ -1,11 +1,11 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { TheProblemDim } from "@/components/the-problem-dim"
+import { TheProblem } from "@/components/the-problem"
 import { HowItWorks } from "@/components/how-it-works"
-import { WhoItsFor } from "@/components/who-its-for"
 import { MeetBeacon } from "@/components/meet-beacon"
 import { ComingSoon } from "@/components/coming-soon"
 import { Footer } from "@/components/footer"
+import { StickyMobileCTA } from "@/components/sticky-mobile-cta"
 
 export default function Home() {
   return (
@@ -13,13 +13,13 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <TheProblemDim />
+        <TheProblem />
         <HowItWorks />
-        <WhoItsFor />
         <MeetBeacon />
         <ComingSoon />
       </main>
       <Footer />
+      <StickyMobileCTA />
     </div>
   )
 }
