@@ -23,7 +23,7 @@ export function Signals() {
                 <path d="M20 200 C70 190, 130 160, 190 170 S290 130, 340 140 L380 120" stroke="#3D2B1F" strokeWidth="2" strokeLinecap="round" className="line-draw" opacity="0.25" fill="none" />
               </svg>
 
-              <div className="mt-6 flex flex-wrap gap-6">
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-0.5 rounded-full bg-gold-mist" />
                   <span className="text-xs text-muted">Sleep quality</span>

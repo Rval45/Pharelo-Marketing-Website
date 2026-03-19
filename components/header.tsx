@@ -63,7 +63,7 @@ export function Header() {
           {/* Mobile hamburger */}
           <button
             type="button"
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2.5 -mr-1 text-foreground"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -78,12 +78,12 @@ export function Header() {
           menuOpen ? 'open' : ''
         }`}
       >
-        <nav className="flex flex-col gap-4 px-6 py-6">
+        <nav className="flex flex-col gap-1 px-6 py-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-base text-muted transition-colors hover:text-foreground"
+              className="py-3 block text-base text-muted transition-colors hover:text-foreground"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}

@@ -14,7 +14,7 @@ export function TheProblem() {
       {/* Background photo — desaturated, faded into cream */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Image
-          src="/images/waiting-room.png"
+          src="/images/waiting-room.webp"
           alt=""
           fill
           className="object-cover object-center"
