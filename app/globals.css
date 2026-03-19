@@ -223,6 +223,41 @@ nav a:not(.bg-bronze):hover::after {
   animation: checkmark-draw 0.4s ease-out 0.3s both;
 }
 
+/* Hero Variant A — staggered float for layered cards */
+@keyframes layer-float {
+  0%, 100% { transform: var(--layer-rotate) translateY(0px); }
+  50% { transform: var(--layer-rotate) translateY(-6px); }
+}
+.hero-layer {
+  --layer-rotate: rotate(0deg);
+  animation: layer-float 7s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.hero-layer:nth-child(1) { --layer-rotate: rotate(3deg); animation-duration: 8s; }
+.hero-layer:nth-child(2) { --layer-rotate: rotate(-2deg); animation-duration: 7s; animation-delay: 0.8s; }
+.hero-layer:nth-child(3) { --layer-rotate: rotate(0.5deg); animation-duration: 6.5s; animation-delay: 1.6s; }
+
+/* Hero Variant B — recording dot pulse */
+@keyframes recording-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.recording-dot {
+  animation: recording-pulse 1.2s ease-in-out infinite;
+}
+
+/* Hero Variant C — signal ring pulse */
+@keyframes signal-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.5; }
+}
+.signal-pulse {
+  animation: signal-pulse 3s ease-in-out infinite;
+}
+.signal-center-glow {
+  filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.15));
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -256,6 +291,16 @@ nav a:not(.bg-bronze):hover::after {
   .animate-checkmark {
     animation: none;
     stroke-dashoffset: 0;
+  }
+  .hero-layer {
+    animation: none;
+  }
+  .recording-dot {
+    animation: none;
+  }
+  .signal-pulse {
+    animation: none;
+    opacity: 0.3;
   }
   body::after {
     display: none;
