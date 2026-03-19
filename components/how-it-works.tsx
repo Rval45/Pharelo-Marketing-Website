@@ -108,7 +108,7 @@ const mockupComponents: Record<string, React.FC> = {
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="px-6 md:px-12 py-24 md:py-36">
+    <section id="how-it-works" className="px-6 md:px-12 py-28 md:py-44">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-24 md:gap-36">
           {phases.map((phase) => {

@@ -3,7 +3,7 @@ import { WaitlistForm } from './waitlist-form'
 
 export function FinalCTA() {
   return (
-    <section id="waitlist" className="relative px-6 md:px-12 py-24 md:py-36">
+    <section id="waitlist" className="relative px-6 md:px-12 py-32 md:py-48">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'linear-gradient(to bottom, transparent, rgba(201,162,39,0.03))' }}

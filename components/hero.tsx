@@ -27,25 +27,41 @@ export function Hero() {
 
           {/* Right — Abstract illustration */}
           <div className="hidden lg:flex items-center justify-center" aria-hidden="true">
-            <div className="relative w-80 h-80">
-              {/* Organic blob shapes */}
-              <svg viewBox="0 0 320 320" className="absolute inset-0 w-full h-full" fill="none">
-                <ellipse cx="160" cy="170" rx="130" ry="120" fill="currentColor" className="text-gold-mist/15" />
-                <ellipse cx="180" cy="140" rx="100" ry="90" fill="currentColor" className="text-bronze/8" transform="rotate(15 180 140)" />
-                <ellipse cx="140" cy="190" rx="80" ry="70" fill="currentColor" className="text-gold-mist/10" transform="rotate(-10 140 190)" />
+            <div className="relative w-[420px] h-[420px]">
+              {/* Organic blob shapes — asymmetric bezier paths */}
+              <svg viewBox="0 0 420 420" className="absolute inset-0 w-full h-full" fill="none">
+                <path
+                  d="M210 50c80 0 150 40 170 110s-10 140-70 180-130 50-190 20S30 280 30 200 130 50 210 50z"
+                  fill="currentColor"
+                  className="text-gold-mist/[0.07]"
+                />
+                <path
+                  d="M250 90c60 20 100 80 90 150s-60 120-130 130-130-20-150-80 20-120 70-150 60-70 120-50z"
+                  fill="currentColor"
+                  className="text-bronze/[0.05]"
+                />
+                <path
+                  d="M180 140c50-10 110 10 130 60s0 110-50 140-120 20-150-20-30-100 10-140 30-30 60-40z"
+                  fill="currentColor"
+                  className="text-gold-mist/[0.09]"
+                />
               </svg>
               {/* Beacon mark floating */}
               <div className="absolute inset-0 flex items-center justify-center animate-float">
-                <Logo size={120} />
+                <Logo size={100} />
               </div>
             </div>
           </div>
 
           {/* Mobile — small decorative accent */}
           <div className="lg:hidden flex justify-center -mt-4" aria-hidden="true">
-            <div className="relative w-32 h-32">
-              <svg viewBox="0 0 128 128" className="absolute inset-0 w-full h-full" fill="none">
-                <ellipse cx="64" cy="68" rx="52" ry="48" fill="currentColor" className="text-gold-mist/12" />
+            <div className="relative w-40 h-40">
+              <svg viewBox="0 0 160 160" className="absolute inset-0 w-full h-full" fill="none">
+                <path
+                  d="M80 20c40 0 65 25 70 55s-10 60-40 70-60 5-75-15S15 70 35 45 50 20 80 20z"
+                  fill="currentColor"
+                  className="text-gold-mist/[0.08]"
+                />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center animate-float">
                 <Logo size={48} />

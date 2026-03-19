@@ -30,6 +30,33 @@
   }
 }
 
+/* Subtle paper grain texture — fixed overlay, no GPU repaint */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Section transition — subtle warm divider */
+.section-fade {
+  position: relative;
+}
+.section-fade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 162, 39, 0.15), transparent);
+}
+
 /* Scroll reveal base state */
 .reveal {
   opacity: 0;
@@ -143,9 +170,38 @@
 }
 
 /* Tactile button feedback */
+.bg-bronze {
+  transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 1px 2px rgba(61, 43, 31, 0.08);
+}
+.bg-bronze:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 105, 20, 0.15);
+}
 button:active:not(:disabled),
 [role="button"]:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 0 0 rgba(61, 43, 31, 0);
+}
+
+/* Nav link underline reveal */
+nav a:not(.bg-bronze) {
+  position: relative;
+}
+nav a:not(.bg-bronze)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+nav a:not(.bg-bronze):hover::after {
+  width: 100%;
 }
 
 /* Waitlist success */
@@ -200,5 +256,8 @@ button:active:not(:disabled),
   .animate-checkmark {
     animation: none;
     stroke-dashoffset: 0;
+  }
+  body::after {
+    display: none;
   }
 }

@@ -2,7 +2,7 @@ import { ScrollReveal } from './scroll-reveal'
 
 export function Signals() {
   return (
-    <section id="signals" className="px-6 md:px-12 py-24 md:py-36">
+    <section id="signals" className="px-6 md:px-12 py-20 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <ScrollReveal>

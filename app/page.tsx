@@ -15,9 +15,12 @@ export default function Home() {
       <main>
         <Hero />
         <TheProblem />
+        <div className="section-fade" />
         <HowItWorks />
+        <div className="section-fade" />
         <MeetBeacon />
         <Signals />
+        <div className="section-fade" />
         <WhoItsFor />
         <FinalCTA />
       </main>
