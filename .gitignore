@@ -12,3 +12,6 @@ node_modules/
 .claude/
 _tmp_*
 .superpowers/
+
+# Static export output
+out/
