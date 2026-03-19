@@ -1,11 +1,12 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { TheProblem } from "@/components/the-problem"
-import { HowItWorks } from "@/components/how-it-works"
-import { MeetBeacon } from "@/components/meet-beacon"
-import { ComingSoon } from "@/components/coming-soon"
-import { Footer } from "@/components/footer"
-import { StickyMobileCTA } from "@/components/sticky-mobile-cta"
+import { Header } from '@/components/header'
+import { Hero } from '@/components/hero'
+import { TheProblem } from '@/components/the-problem'
+import { HowItWorks } from '@/components/how-it-works'
+import { MeetBeacon } from '@/components/meet-beacon'
+import { Signals } from '@/components/signals'
+import { WhoItsFor } from '@/components/who-its-for'
+import { FinalCTA } from '@/components/final-cta'
+import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
@@ -16,10 +17,11 @@ export default function Home() {
         <TheProblem />
         <HowItWorks />
         <MeetBeacon />
-        <ComingSoon />
+        <Signals />
+        <WhoItsFor />
+        <FinalCTA />
       </main>
       <Footer />
-      <StickyMobileCTA />
     </div>
   )
 }
