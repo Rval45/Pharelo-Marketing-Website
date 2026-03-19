@@ -21,27 +21,27 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex gap-12">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-0.5">
               <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                 Legal
               </span>
-              <Link href="/privacy" className="text-sm text-muted transition-colors hover:text-foreground">
+              <Link href="/privacy" className="py-1.5 text-sm text-muted transition-colors hover:text-foreground">
                 Privacy
               </Link>
-              <Link href="/terms" className="text-sm text-muted transition-colors hover:text-foreground">
+              <Link href="/terms" className="py-1.5 text-sm text-muted transition-colors hover:text-foreground">
                 Terms
               </Link>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-0.5">
               <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                 Contact
               </span>
-              <Link href="/support" className="text-sm text-muted transition-colors hover:text-foreground">
+              <Link href="/support" className="py-1.5 text-sm text-muted transition-colors hover:text-foreground">
                 Support
               </Link>
               <a
                 href="mailto:team@pharelo.com"
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="py-1.5 text-sm text-muted transition-colors hover:text-foreground"
               >
                 team@pharelo.com
               </a>

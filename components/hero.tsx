@@ -7,8 +7,8 @@ export function Hero() {
       {/* Ambient gradient background */}
       <div className="absolute inset-0 hero-gradient pointer-events-none" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-[1400px] w-full px-6 md:px-12 py-24 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative mx-auto max-w-[1400px] w-full px-6 md:px-12 py-16 md:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left — Content */}
           <div className="flex flex-col gap-8 max-w-xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-foreground">

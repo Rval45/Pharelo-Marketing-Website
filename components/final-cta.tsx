@@ -8,7 +8,7 @@ export function FinalCTA() {
       {/* Background photo — couple walking into light */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Image
-          src="/images/walking-out.png"
+          src="/images/walking-out.webp"
           alt=""
           fill
           className="object-cover object-top"

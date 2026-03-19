@@ -13,5 +13,8 @@ node_modules/
 _tmp_*
 .superpowers/
 
+# Original source images (large PNGs, optimized WebP versions are in public/images/)
+images-src/
+
 # Static export output
 out/

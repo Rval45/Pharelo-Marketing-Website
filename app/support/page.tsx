@@ -24,7 +24,7 @@ export default function SupportPage() {
       <Header />
       <main className="flex-1 pt-16">
         <div className="mx-auto max-w-[65ch] px-6 py-14 md:py-20">
-          <Link href="/" className="group mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="/" className="group mb-10 inline-flex items-center gap-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
             Back to home
           </Link>

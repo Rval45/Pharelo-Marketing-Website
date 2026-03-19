@@ -9,7 +9,7 @@ export function HeroVariantA() {
       {/* Photo — warm, human, anchor visual */}
       <div className="absolute top-4 right-0 w-[320px] h-[400px] rounded-[1.75rem] overflow-hidden shadow-[0_20px_50px_-16px_rgba(61,43,31,0.12)]">
         <Image
-          src="/images/Pharelo-Hero-1.png"
+          src="/images/Pharelo-Hero-1.webp"
           alt="Two people smiling, reviewing health notes together"
           fill
           className="object-cover"
@@ -106,7 +106,7 @@ export function HeroVariantACompact() {
       {/* Photo */}
       <div className="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-[0_12px_32px_-10px_rgba(61,43,31,0.1)]">
         <Image
-          src="/images/Pharelo-Hero-1.png"
+          src="/images/Pharelo-Hero-1.webp"
           alt="Two people smiling, reviewing health notes together"
           fill
           className="object-cover"
@@ -125,11 +125,11 @@ export function HeroVariantACompact() {
       <div className="relative -mt-10 mx-4 rounded-xl border border-border/40 bg-cream-light/95 backdrop-blur-sm p-3.5 shadow-[0_12px_28px_-8px_rgba(61,43,31,0.08),inset_0_1px_0_rgba(255,252,247,0.6)] z-10">
         <div className="flex items-center gap-2 mb-2">
           <Sparkle size={12} className="text-bronze" weight="fill" />
-          <span className="text-[8px] font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
             Beacon
           </span>
         </div>
-        <p className="text-[10px] text-foreground/80 leading-relaxed">
+        <p className="text-xs text-foreground/80 leading-relaxed">
           You may want to ask about the follow-up lab results.
         </p>
       </div>
