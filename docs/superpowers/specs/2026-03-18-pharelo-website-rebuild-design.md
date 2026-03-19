@@ -9,10 +9,10 @@ Full rebuild of the Pharelo marketing website. Pharelo is a healthcare appointme
 - **Framework:** Next.js 16 with static export (`output: "export"`)
 - **Styling:** Tailwind CSS v4 with `@tailwindcss/postcss`, CSS custom properties for brand tokens
 - **Motion:** CSS animations + `IntersectionObserver` in isolated `"use client"` leaf components (no framer-motion)
-- **Fonts:** Source Serif 4 (headlines, via `next/font/google`) + Cabinet Grotesk (body, via `next/font/local` with self-hosted files)
+- **Fonts:** Source Serif 4 (headlines, via `next/font/google`) + Cabinet Grotesk (body, via `next/font/local` — download .woff2 files from Fontshare, weights 400 + 500, placed in `public/fonts/`. Fontshare license permits free commercial use.)
 - **Icons:** `@phosphor-icons/react` (replacing current `lucide-react`)
 - **Deploy:** Cloudflare Workers with Static Assets via `wrangler deploy` (existing `wrangler.toml` config)
-- **Existing integrations kept:** Loops waitlist form endpoint, Vercel Analytics
+- **Existing integrations kept:** Loops waitlist form endpoint, Vercel Analytics (`@vercel/analytics` works on Cloudflare — keep it)
 
 ### Design Parameters
 
@@ -24,17 +24,21 @@ Full rebuild of the Pharelo marketing website. Pharelo is a healthcare appointme
 
 Strict one-CTA-color rule. Visual hierarchy comes from typography weight and opacity, not color variety.
 
+All tokens use the `--color-*` prefix for Tailwind v4 utility class generation (e.g., `bg-cream`, `text-warm-bark`).
+
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--cream` | `#F5F0E8` | Page background |
-| `--cream-light` | `#FFFCF7` | Card surfaces, elevated areas |
-| `--bronze` | `#8B6914` | CTA buttons — the ONE accent color |
-| `--bronze-hover` | `#6B4F0E` | CTA hover/active state |
-| `--gold-mist` | `#C9A227` | Subtle highlights, logo accent, decorative elements |
-| `--warm-bark` | `#3D2B1F` | Headlines, primary text |
-| `--warm-bark-60` | `rgba(61,43,31,0.6)` | Body text |
-| `--warm-bark-30` | `rgba(61,43,31,0.3)` | Muted/tertiary text, borders |
-| `--warm-bark-10` | `rgba(61,43,31,0.1)` | Dividers, subtle borders, hover backgrounds |
+| `--color-background` | `#F5F0E8` | Page background (cream) |
+| `--color-foreground` | `#3D2B1F` | Headlines, primary text (warm bark) |
+| `--color-cream-light` | `#FFFCF7` | Card surfaces, elevated areas |
+| `--color-bronze` | `#8B6914` | CTA buttons — the ONE accent color |
+| `--color-bronze-hover` | `#6B4F0E` | CTA hover/active state |
+| `--color-gold-mist` | `#C9A227` | Subtle highlights, logo accent, decorative elements |
+| `--color-muted` | `rgba(61,43,31,0.6)` | Body text |
+| `--color-border` | `rgba(61,43,31,0.1)` | Dividers, subtle borders |
+| `--color-muted-foreground` | `rgba(61,43,31,0.3)` | Tertiary text, muted borders |
+
+Note: `viewport` themeColor in `layout.tsx` must update to `#F5F0E8` to match.
 
 ## Typography
 
@@ -58,8 +62,10 @@ Seven sections forming a narrative arc from problem to solution to action.
   - Cabinet Grotesk subtext explaining Pharelo's value in one sentence
   - Waitlist email input + bronze CTA button (Loops integration)
 - **Right side:**
-  - Abstract warm illustration: layered organic shapes in gold/cream with the beacon logo mark floating
-  - Built as SVG/CSS, not raster images
+  - Abstract warm illustration built as SVG/CSS (not raster images)
+  - Composition: 3-4 layered organic blob shapes in `--color-gold-mist` (opacity 0.15-0.3) and `--color-bronze` (opacity 0.08-0.12), with the beacon logo mark centered and floating
+  - Blobs use SVG `<path>` with smooth cubic beziers, soft edges, overlapping at different scales
+  - The beacon mark sits at ~120px centered within the blob cluster
 - **Background:** Subtle mesh gradient in cream/gold tones with slow CSS `background-position` drift animation (25s cycle)
 - **Mobile:** Stacks vertically, illustration shrinks to decorative accent above headline
 - **Height:** `min-h-[100dvh]` (never `h-screen`)
@@ -79,6 +85,7 @@ Seven sections forming a narrative arc from problem to solution to action.
 
 #### 03 — How Pharelo Works (Zig-Zag Layout)
 
+- **Section ID:** `id="how-it-works"`
 - **Layout:** Three phases, alternating text/visual sides
   - Phase 1 (Before): text left, mockup right
   - Phase 2 (During): text right, mockup left
@@ -92,11 +99,12 @@ Seven sections forming a narrative arc from problem to solution to action.
   - Before: checklist interface with checkboxes and question items
   - During: recording waveform visualization + live transcript text
   - After: summary card with key takeaways and action items
-- **Motion:** Scroll-triggered fade-up per phase, mockups slide in from their respective sides
+- **Motion:** Each phase is wrapped in `scroll-reveal.tsx`. Text fades up, mockups slide in from their respective sides (CSS `translateX` transition triggered by `.visible` class)
 - **Mobile:** Single column, mockups full-width below text
 
 #### 04 — Meet Beacon (Feature Spotlight)
 
+- **Section ID:** `id="beacon"`
 - **Layout:** Left-aligned intro text with chat demo below/beside
 - **Content:**
   - "Meet Beacon" headline in Source Serif 4
@@ -110,6 +118,7 @@ Seven sections forming a narrative arc from problem to solution to action.
 
 #### 05 — Signals (Organic Data Visualization)
 
+- **Section ID:** `id="signals"`
 - **Layout:** Feature card style — headline + visualization
 - **Content:**
   - "See what your visits reveal" headline
@@ -118,19 +127,20 @@ Seven sections forming a narrative arc from problem to solution to action.
   - SVG organic curved lines (bezier paths, not straight/clinical) showing 2-3 health themes tracked over time
   - Theme labels floating alongside curves: "Sleep quality", "Medication response", "Energy levels"
   - Muted gold/bronze palette for the curves
-  - CSS `stroke-dashoffset` animation draws lines on scroll trigger
+  - SVG wrapped in `scroll-reveal.tsx` — when `.visible` class is added, CSS `stroke-dashoffset` transition draws the lines (pure CSS, no JS in the SVG component itself)
 - **Not clinical charts.** No axes, no gridlines. Organic, flowing, warm.
 
 #### 06 — Who It's For (Scenario Section)
 
-- **Layout:** 2-column offset grid with asymmetric sizing (e.g., `grid-template-columns: 1.2fr 0.8fr` or similar variance)
+- **Section ID:** `id="who-its-for"`
+- **Layout:** Single column, stacked scenarios with generous `py-12` spacing between them. Asymmetric left padding on alternating items (`pl-0` / `pl-12 lg:pl-24`) for visual variance.
 - **Content:** 3 scenarios, no fake personas or names:
   - Patient managing a chronic condition across specialists
   - Caregiver coordinating appointments for an aging parent
   - Someone preparing for a big specialist visit for the first time
 - **Styling:** Each scenario is a short narrative paragraph with `border-top` divider, no boxed cards
 - **Motion:** Staggered scroll reveal
-- **Mobile:** Single column
+- **Mobile:** Single column, no offset padding
 
 #### 07 — Final CTA + Footer
 
@@ -160,26 +170,32 @@ Seven sections forming a narrative arc from problem to solution to action.
 
 ### 4. Support Page (`/support`)
 
-- Same treatment as privacy/terms
-- Contact information (team@pharelo.com)
-- FAQ or help content if applicable
+- Same typographic/color treatment as privacy/terms
+- Contact email: team@pharelo.com (mailto link, no form — removes the current fake form)
+- Brief help text / FAQ section if content exists, otherwise just contact info
 - Same header/footer
 
 ## Navigation
 
-- **Sticky header:** Beacon logo mark (left), nav links (center-right): "How it works", "Beacon", "Signals" (smooth-scroll anchor links to landing page sections), waitlist CTA button (far right)
-- **Scroll behavior:** Header background transitions from transparent to cream with subtle backdrop-blur on scroll (CSS transition, `"use client"` component for scroll state)
-- **Mobile:** Hamburger icon, slide-down panel with nav links and CTA
-- **Active on sub-pages:** Logo links to `/`, nav links navigate to `/#section-id`
+- **Sticky header:** Beacon logo mark (left), nav links (center-right): "How it works" (`#how-it-works`), "Beacon" (`#beacon`), "Signals" (`#signals`) — smooth-scroll anchor links on landing page, waitlist CTA button (far right)
+- **Scroll behavior:** Header background transitions from `transparent` to `--color-background` with `backdrop-blur-sm` on scroll (triggered at ~50px scroll). CSS transition, `"use client"` component tracks scroll position via `window.scrollY`.
+- **Mobile hamburger menu:**
+  - Trigger: Phosphor `List` icon (24px), positioned right
+  - Panel: slides down from header, `--color-background` background, `border-bottom` with `--color-border`
+  - Content: vertical stack of nav links + waitlist CTA button, `py-6 px-6` padding
+  - Dismiss: tap hamburger (toggles to `X` icon) or tap any nav link
+  - Animation: `max-height` transition, 300ms ease
+- **Sub-pages:** Logo links to `/`, nav links use `href="/#how-it-works"` etc. (browser navigates then jumps to anchor — no smooth scroll cross-page, which is acceptable)
 
 ## Logo — Abstract Beacon Mark
 
-- Custom SVG: abstract lighthouse/beacon concept
-- Organic, warm shapes — not geometric or clinical
-- Uses `--gold-mist` and `--warm-bark` colors
-- Works at small sizes (header) and medium sizes (hero decoration)
-- Light/dark favicon variants derived from the same mark
-- Apple touch icon generated from the mark
+The logo is a design+implementation task — no existing asset. It will be hand-crafted as an SVG during implementation.
+
+- **Concept:** Abstract beacon/lighthouse — a vertical form suggesting a tower or light source, with radiating arcs or organic light rays emanating upward/outward. Not a literal lighthouse silhouette.
+- **Construction:** 2-3 layered SVG paths. A central vertical element (the beacon body) with 1-2 curved arcs above it (the light). Rounded terminals, no sharp corners.
+- **Colors:** `--color-gold-mist` for the light arcs, `--color-foreground` for the beacon body. Single-color variant for small sizes.
+- **Sizes:** Must work at 24px (header), 48px (footer), and ~120px (hero decoration). Test legibility at smallest size.
+- **Favicon:** Export simplified single-color version for `icon-light-32x32.png` (dark mark on transparent) and `icon-dark-32x32.png` (light mark on transparent). Apple touch icon at 180px with cream background.
 
 ## Motion System
 
@@ -253,14 +269,19 @@ Everything else is a server component. This keeps the JS bundle minimal for stat
 
 ### Remove
 - `lucide-react` — replaced by phosphor
-- `@vercel/analytics` — evaluate if still needed on Cloudflare (keep if working)
-- Unused Radix primitives (keep only what's needed: none for marketing site)
-- Various unused shadcn/ui dependencies
+- All `@radix-ui/*` packages — not needed for marketing site
+- `@hookform/resolvers`, `react-hook-form`, `zod` — no forms need validation (waitlist is a simple POST)
+- `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `react-day-picker`, `react-resizable-panels`, `recharts`, `sonner`, `vaul`, `next-themes` — unused shadcn/ui dependencies
+- `tw-animate-css` — replaced by custom motion system
+- `class-variance-authority` — no component variant system needed
+- `tailwind-merge` — unlikely needed without shadcn component merging
 
 ### Keep
 - `next`, `react`, `react-dom` — framework
-- `tailwindcss`, `@tailwindcss/postcss`, `tw-animate-css` — styling
-- `tailwind-merge`, `clsx`, `class-variance-authority` — utility classes
+- `tailwindcss`, `@tailwindcss/postcss` — styling
+- `clsx` — lightweight class concatenation
+- `@vercel/analytics` — works on Cloudflare, keep for analytics
+- `autoprefixer` — CSS compatibility
 
 ## File Cleanup
 
