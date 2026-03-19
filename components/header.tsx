@@ -1,92 +1,102 @@
-"use client"
+'use client'
 
-import Link from "next/link"
-import { useEffect, useState, useCallback } from "react"
-import { cn } from "@/lib/utils"
-import { LighthouseIcon } from "./lighthouse-icon"
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { List, X } from '@phosphor-icons/react'
+import { Logo } from './logo'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [overDark, setOverDark] = useState(false)
-
-  /**
-   * Combined scroll handler: checks scroll position AND whether
-   * the header overlaps a [data-theme="dark"] section by comparing
-   * bounding rects directly. More reliable than IntersectionObserver
-   * for a fixed-position element.
-   */
-  const checkScroll = useCallback(() => {
-    setScrolled(window.scrollY > 10)
-
-    const headerBottom = 64 // approx header height
-    const darkSections = document.querySelectorAll('[data-theme="dark"]')
-    let isDark = false
-
-    darkSections.forEach((el) => {
-      const rect = el.getBoundingClientRect()
-      if (rect.top < headerBottom && rect.bottom > 0) {
-        isDark = true
-      }
-    })
-
-    setOverDark(isDark)
-  }, [])
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    checkScroll()
-    window.addEventListener("scroll", checkScroll, { passive: true })
-    return () => window.removeEventListener("scroll", checkScroll)
-  }, [checkScroll])
+    function onScroll() {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const navLinks = [
+    { label: 'How it works', href: '/#how-it-works' },
+    { label: 'Beacon', href: '/#beacon' },
+    { label: 'Signals', href: '/#signals' },
+  ]
 
   return (
     <header
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-400 ease-out",
-        scrolled && !overDark &&
-          "bg-cream/95 backdrop-blur-lg border-b border-soft-gold/15",
-        scrolled && overDark &&
-          "bg-dark-slate/95 backdrop-blur-lg border-b border-white/5",
-        !scrolled && "bg-transparent"
-      )}
-      style={
-        scrolled && !overDark
-          ? { boxShadow: "0 1px 8px rgba(69,26,3,0.06)" }
-          : undefined
-      }
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? 'bg-background/90 backdrop-blur-sm border-b border-border'
+          : 'bg-transparent'
+      }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-12 md:py-5">
-        <Link
-          href="/"
-          aria-label="Pharelo home"
-          className="flex items-center gap-2"
-        >
-          <LighthouseIcon
-            className={cn(
-              "h-[18px] w-[18px] transition-colors duration-400 ease-out",
-              overDark ? "text-teal" : "text-warm-orange"
-            )}
-            strokeWidth={1.5}
-          />
-          <span
-            className={cn(
-              "font-serif text-xl tracking-tight transition-colors duration-400 ease-out",
-              overDark ? "text-cream" : "text-dark-slate"
-            )}
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5">
+            <Logo size={28} />
+            <span className="text-lg font-serif text-foreground tracking-tight">
+              Pharelo
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="/#waitlist"
+              className="rounded-full bg-bronze px-5 py-2 text-sm font-medium text-cream-light transition-colors hover:bg-bronze-hover"
+            >
+              Join waitlist
+            </a>
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            Pharelo
-          </span>
-        </Link>
-        <a
-          href="#waitlist"
-          className={cn(
-            "group inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]",
-            overDark
-              ? "bg-teal text-dark-slate hover:bg-teal/85 hover:shadow-md hover:shadow-teal/20"
-              : "bg-warm-orange text-white hover:bg-warm-orange-hover hover:shadow-md hover:shadow-warm-orange/20"
-          )}
-        >
-          Get early access <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>
-        </a>
+            {menuOpen ? <X size={24} /> : <List size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu panel */}
+      <div
+        className={`mobile-menu md:hidden border-b border-border bg-background ${
+          menuOpen ? 'open' : ''
+        }`}
+      >
+        <nav className="flex flex-col gap-4 px-6 py-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-base text-muted transition-colors hover:text-foreground"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/#waitlist"
+            className="mt-2 rounded-full bg-bronze px-5 py-3 text-center text-sm font-medium text-cream-light transition-colors hover:bg-bronze-hover"
+            onClick={() => setMenuOpen(false)}
+          >
+            Join waitlist
+          </a>
+        </nav>
       </div>
     </header>
   )

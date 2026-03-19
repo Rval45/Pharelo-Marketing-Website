@@ -1,0 +1,64 @@
+import Image from 'next/image'
+import { ScrollReveal } from './scroll-reveal'
+import { WaitlistForm } from './waitlist-form'
+
+export function FinalCTA() {
+  return (
+    <section id="waitlist" className="relative px-6 md:px-12 py-32 md:py-48 overflow-hidden">
+      {/* Background photo — couple walking into light */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <Image
+          src="/images/walking-out.png"
+          alt=""
+          fill
+          className="object-cover object-top"
+          sizes="100vw"
+        />
+        {/* Heavy cream overlay — photo is a whisper behind the text */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(245,240,232,0.85) 0%, rgba(245,240,232,0.78) 40%, rgba(245,240,232,0.9) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Warm gold gradient accent */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 40%, rgba(201,162,39,0.03) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-2xl text-center">
+        <ScrollReveal>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl tracking-tight text-foreground leading-tight">
+            Your next appointment
+            <br />
+            deserves better.
+          </h2>
+        </ScrollReveal>
+
+        <ScrollReveal
+          className="reveal stagger"
+          style={{ '--index': 1 } as React.CSSProperties}
+        >
+          <p className="mt-6 text-lg text-muted max-w-md mx-auto">
+            Join the waitlist and be the first to know when Pharelo is ready.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal
+          className="reveal stagger"
+          style={{ '--index': 2 } as React.CSSProperties}
+        >
+          <div className="mt-10 max-w-md mx-auto">
+            <WaitlistForm id="cta-email" />
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  )
+}

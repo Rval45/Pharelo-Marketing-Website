@@ -1,51 +1,40 @@
-"use client"
-
-import { ChevronDown } from "lucide-react"
+import { WaitlistForm } from './waitlist-form'
+import { HeroVariantA, HeroVariantACompact } from './hero-variant-a'
 
 export function Hero() {
   return (
-    <section className="relative px-6 pt-12 pb-10 md:pt-16 md:pb-14 lg:pt-20 lg:pb-16 md:px-12">
-      <div className="absolute inset-0 hero-ambient-bg pointer-events-none" aria-hidden="true" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="flex flex-col gap-5 md:gap-6 items-center text-center">
-          <span className="inline-block text-sm tracking-widest uppercase text-warm-secondary/50 font-sans md:text-base">
-            For the people holding it all together
-          </span>
+    <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+      {/* Ambient gradient background */}
+      <div className="absolute inset-0 hero-gradient pointer-events-none" aria-hidden="true" />
 
-          <h1 className="font-serif text-[2.5rem] leading-[1.08] md:text-6xl lg:text-7xl text-dark-slate tracking-tight text-balance">
-            You shouldn't have to hold it all in your {" "}
-            <span className="text-warm-orange">head.</span>
-          </h1>
+      <div className="relative mx-auto max-w-[1400px] w-full px-6 md:px-12 py-24 md:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left — Content */}
+          <div className="flex flex-col gap-8 max-w-xl">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-foreground">
+              Walk in prepared.
+              <br />
+              Walk out clear.
+            </h1>
+            <p className="text-lg md:text-xl leading-relaxed text-muted max-w-[50ch]">
+              Pharelo helps you organize your thoughts before every appointment,
+              capture what matters during the visit, and understand everything after.
+            </p>
+            <div className="max-w-md">
+              <WaitlistForm id="hero-email" />
+            </div>
+          </div>
 
-          <p className="text-base md:text-lg leading-relaxed text-warm-secondary">
-            Pharelo helps you prepare for medical visits, stay present during them, and make sure nothing important goes unsaid.
-          </p>
+          {/* Right — Photo + floating cards (desktop) */}
+          <div className="hidden lg:flex items-center justify-center">
+            <HeroVariantA />
+          </div>
 
-          <a
-            href="#waitlist"
-            className="group self-center inline-flex items-center gap-2 rounded-full bg-warm-orange px-6 py-3 text-base font-medium text-white hover:bg-warm-orange-hover hover:scale-[1.03] hover:shadow-lg hover:shadow-warm-orange/25 active:scale-[0.98] transition-all duration-200"
-          >
-            Join the waitlist <span className="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
-          </a>
+          {/* Mobile — compact photo + card */}
+          <div className="lg:hidden">
+            <HeroVariantACompact />
+          </div>
         </div>
-
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="mt-10 md:mt-12 flex justify-center animate-float">
-      <button
-        onClick={() => document.getElementById("main-content")?.scrollIntoView({ behavior: "smooth" })}
-        className="flex flex-col items-center gap-2 bg-transparent border-0 cursor-pointer rounded p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warm-secondary/50"
-      >
-        <span className="text-xs tracking-widest uppercase text-warm-secondary/50 font-sans">
-          See how it works
-        </span>
-        <ChevronDown
-          className="w-4 h-4 text-warm-secondary/40"
-          strokeWidth={1.5}
-          aria-hidden="true"
-        />
-      </button>
       </div>
     </section>
   )
