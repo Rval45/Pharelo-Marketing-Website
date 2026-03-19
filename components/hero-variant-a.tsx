@@ -104,7 +104,7 @@ export function HeroVariantACompact() {
   return (
     <div className="relative w-full max-w-[300px] mx-auto">
       {/* Photo */}
-      <div className="w-full h-[220px] rounded-2xl overflow-hidden shadow-[0_12px_32px_-10px_rgba(61,43,31,0.1)]">
+      <div className="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-[0_12px_32px_-10px_rgba(61,43,31,0.1)]">
         <Image
           src="/images/Pharelo-Hero-1.png"
           alt="Two people smiling, reviewing health notes together"
