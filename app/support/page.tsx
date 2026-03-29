@@ -24,22 +24,22 @@ export default function SupportPage() {
       <Header />
       <main className="flex-1 pt-16">
         <div className="mx-auto max-w-[65ch] px-6 py-14 md:py-20">
-          <Link href="/" className="group mb-10 inline-flex items-center gap-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="/" className="group mb-10 inline-flex items-center gap-2 py-2 text-sm text-foreground-subtle transition-colors hover:text-foreground">
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
             Back to home
           </Link>
           <div className="mb-12 flex flex-col gap-3">
             <h1 className="font-serif text-3xl md:text-4xl tracking-tight text-foreground">Support</h1>
-            <p className="text-sm leading-relaxed text-muted max-w-lg">Need help with Pharelo? We{'\u2019'}re here for you.</p>
+            <p className="text-sm leading-relaxed text-foreground-muted max-w-lg">Need help with Pharelo? We{'\u2019'}re here for you.</p>
           </div>
           <section className="mb-14">
-            <div className="flex items-center gap-4 rounded-xl border border-border bg-cream-light px-5 py-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-bronze/10">
-                <EnvelopeSimple size={18} className="text-bronze" weight="fill" />
+            <div className="flex items-center gap-4 rounded-xl border border-border bg-surface px-5 py-4">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-peach-500/10">
+                <EnvelopeSimple size={18} className="text-peach-500" weight="fill" />
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-xs text-muted-foreground uppercase tracking-widest">Email us</span>
-                <a href="mailto:team@pharelo.com" className="text-sm font-medium text-foreground transition-colors hover:text-bronze">team@pharelo.com</a>
+                <span className="text-xs text-foreground-subtle uppercase tracking-widest">Email us</span>
+                <a href="mailto:team@pharelo.com" className="text-sm font-medium text-foreground transition-colors hover:text-peach-500">team@pharelo.com</a>
               </div>
             </div>
           </section>

@@ -18,11 +18,11 @@ export function SupportFAQ({ faqs }: { faqs: { question: string; answer: string 
               aria-expanded={isOpen}
             >
               <span className="text-sm font-medium text-foreground pr-4">{faq.question}</span>
-              <span className="shrink-0 text-muted-foreground transition-transform duration-200 text-lg" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }} aria-hidden="true">+</span>
+              <span className="shrink-0 text-foreground-subtle transition-transform duration-200 text-lg" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }} aria-hidden="true">+</span>
             </button>
             {isOpen && (
               <div className="pb-4">
-                <p className="text-sm leading-relaxed text-muted">{faq.answer}</p>
+                <p className="text-sm leading-relaxed text-foreground-muted">{faq.answer}</p>
               </div>
             )}
           </div>

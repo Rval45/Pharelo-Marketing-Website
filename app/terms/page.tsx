@@ -25,19 +25,19 @@ export default function TermsPage() {
       <Header />
       <main className="flex-1 pt-16">
         <div className="mx-auto max-w-[65ch] px-6 py-14 md:py-20">
-          <Link href="/" className="group mb-10 inline-flex items-center gap-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="/" className="group mb-10 inline-flex items-center gap-2 py-2 text-sm text-foreground-subtle transition-colors hover:text-foreground">
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
             Back to home
           </Link>
           <div className="mb-12 flex flex-col gap-2">
             <h1 className="font-serif text-3xl md:text-4xl tracking-tight text-foreground">Terms of service</h1>
-            <p className="text-xs text-muted-foreground">Last updated: February 2026</p>
+            <p className="text-xs text-foreground-subtle">Last updated: February 2026</p>
           </div>
           <div className="flex flex-col gap-10">
             {sections.map((section) => (
               <article key={section.title} className="flex flex-col gap-2 border-t border-border pt-6">
                 <h2 className="font-serif text-lg text-foreground">{section.title}</h2>
-                <p className="text-sm leading-relaxed text-muted">{section.content}</p>
+                <p className="text-sm leading-relaxed text-foreground-muted">{section.content}</p>
               </article>
             ))}
           </div>
