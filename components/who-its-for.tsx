@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ScrollReveal } from './scroll-reveal'
+import { MotionWrapper } from './motion-wrapper'
 
 const scenarios = [
   {
@@ -26,59 +26,51 @@ export function WhoItsFor() {
   return (
     <section id="who-its-for" className="px-6 md:px-12 py-24 md:py-36">
       <div className="mx-auto max-w-[1400px]">
-        <div className="md:grid md:grid-cols-[1fr_1.6fr] md:gap-16 lg:gap-24">
-          {/* Left — section header, sticky */}
-          <ScrollReveal>
-            <div className="md:sticky md:top-32">
-              <span className="text-xs font-medium uppercase tracking-widest text-bronze">
-                Who it{'\u2019'}s for
-              </span>
-              <h2 className="mt-4 font-serif text-3xl md:text-4xl tracking-tight text-foreground">
-                Built for the moments that matter most
-              </h2>
-            </div>
-          </ScrollReveal>
+        <MotionWrapper className="mb-16">
+          <span className="inline-flex w-fit rounded-full bg-peach-500/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.8px] text-peach-700">
+            Who it{'\u2019'}s for
+          </span>
+          <h2 className="mt-4 font-serif text-3xl md:text-4xl tracking-tight text-foreground">
+            Built for the moments that matter most
+          </h2>
+        </MotionWrapper>
 
-          {/* Right — scenarios with photos */}
-          <div className="mt-12 md:mt-0 flex flex-col">
-            {scenarios.map((scenario, i) => (
-              <ScrollReveal
-                key={i}
-                className="reveal stagger"
-                style={{ '--index': i } as React.CSSProperties}
-              >
-                <div className="py-10 md:py-12 border-t border-border">
-                  <div className="flex flex-col sm:grid sm:grid-cols-[1fr_140px] gap-6 items-start">
-                    {/* Photo accent */}
-                    <div className="relative w-full h-[120px] sm:w-[140px] sm:h-[140px] rounded-2xl overflow-hidden shadow-[0_8px_24px_-8px_rgba(61,43,31,0.08)] shrink-0 order-first sm:order-none">
+        <div className="flex flex-col gap-16 md:gap-24">
+          {scenarios.map((scenario, i) => {
+            const imageOnRight = i % 2 === 0
+            return (
+              <MotionWrapper key={i} variant="fade-up" staggerIndex={i}>
+                <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 items-center">
+                  {/* Text */}
+                  <div className={imageOnRight ? 'md:order-1' : 'md:order-2'}>
+                    <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">
+                      {scenario.headline}
+                    </h3>
+                    <p className="text-base leading-relaxed text-foreground-muted max-w-[50ch]">
+                      {scenario.description}
+                    </p>
+                  </div>
+
+                  {/* Image */}
+                  <div className={imageOnRight ? 'md:order-2' : 'md:order-1'}>
+                    <div className="relative w-full h-[200px] md:h-[280px] rounded-[14px] overflow-hidden shadow-md">
                       <Image
                         src={scenario.image}
                         alt={scenario.imageAlt}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 639px) 100vw, 140px"
+                        sizes="(max-width: 768px) 100vw, 45vw"
                       />
-                      {/* Subtle warm tint overlay */}
                       <div
-                        className="absolute inset-0 pointer-events-none mix-blend-multiply"
-                        style={{ background: 'rgba(245,240,232,0.1)' }}
+                        className="absolute inset-0 pointer-events-none"
+                        style={{ background: 'linear-gradient(to top, rgba(247,243,236,0.15) 0%, transparent 40%)' }}
                       />
-                    </div>
-
-                    {/* Text */}
-                    <div>
-                      <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">
-                        {scenario.headline}
-                      </h3>
-                      <p className="text-base leading-relaxed text-muted max-w-[50ch]">
-                        {scenario.description}
-                      </p>
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              </MotionWrapper>
+            )
+          })}
         </div>
       </div>
     </section>
