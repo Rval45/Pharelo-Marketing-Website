@@ -90,6 +90,15 @@ body::after {
   to { opacity: 1; }
 }
 
+/* Hero Ken Burns — slow perpetual zoom on background photo */
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.hero-ken-burns {
+  animation: ken-burns 25s ease-in-out alternate infinite;
+}
+
 /* Typing indicator dots — kept as CSS (simple infinite loop) */
 @keyframes typing-dot {
   0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
@@ -178,6 +187,9 @@ nav a:not(.btn-primary):hover::after {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero-ken-burns {
+    animation: none;
   }
   .typing-dot-1, .typing-dot-2, .typing-dot-3 {
     animation: none;
