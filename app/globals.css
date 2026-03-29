@@ -174,27 +174,10 @@ nav a:not(.btn-primary):hover::after {
   animation: checkmark-draw 0.4s ease-out 0.3s both;
 }
 
-/* Hero — staggered float for glassmorphism cards */
-@keyframes layer-float {
-  0%, 100% { transform: var(--layer-rotate) translateY(0px); }
-  50% { transform: var(--layer-rotate) translateY(-6px); }
-}
-.hero-layer {
-  --layer-rotate: rotate(0deg);
-  animation: layer-float 7s ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
-}
-.hero-layer:nth-child(1) { --layer-rotate: rotate(3deg); animation-duration: 8s; }
-.hero-layer:nth-child(2) { --layer-rotate: rotate(-2deg); animation-duration: 7s; animation-delay: 0.8s; }
-.hero-layer:nth-child(3) { --layer-rotate: rotate(0.5deg); animation-duration: 6.5s; animation-delay: 1.6s; }
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .hero-layer {
-    animation: none;
   }
   .typing-dot-1, .typing-dot-2, .typing-dot-3 {
     animation: none;
