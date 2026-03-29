@@ -7,6 +7,7 @@ const OUTPUT_DIR = new URL('../public/images/', import.meta.url).pathname
 
 const TARGETS = {
   'Pharelo-Logo.png': { width: 128, height: 128 },
+  'Pharelo_Logo.png': { width: 128, height: 128 },
   'Pharelo-Hero-1.png': { width: 640 },
   'hero-person-sitting.png': { width: 1920 },
   'waiting-room.png': { width: 1920 },
