@@ -1,5 +1,6 @@
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
+import { FloatingFeatureCards } from '@/components/hero-variant-a'
 import { TheProblem } from '@/components/the-problem'
 import { HowItWorks } from '@/components/how-it-works'
 import { MeetBeacon } from '@/components/meet-beacon'
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
+        <FloatingFeatureCards />
         <TheProblem />
         <div className="section-fade" />
         <HowItWorks />
