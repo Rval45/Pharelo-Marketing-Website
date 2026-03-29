@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
 import { List, X } from '@phosphor-icons/react'
 import { Logo } from './logo'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const prefersReduced = useReducedMotion()
 
   useEffect(() => {
     function onScroll() {
@@ -23,13 +25,20 @@ export function Header() {
     { label: 'Signals', href: '/#signals' },
   ]
 
+  const Wrapper = prefersReduced ? 'header' : motion.header
+
   return (
-    <header
+    <Wrapper
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/90 backdrop-blur-sm border-b border-border'
+          ? 'bg-background/80 backdrop-blur-xl border-b border-border'
           : 'bg-transparent'
       }`}
+      {...(!prefersReduced && {
+        initial: { opacity: 0, y: -12 },
+        animate: { opacity: 1, y: 0 },
+        transition: { type: 'spring', stiffness: 100, damping: 20 },
+      })}
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="flex h-16 items-center justify-between">
@@ -47,14 +56,14 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="text-sm text-foreground-muted transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="/#waitlist"
-              className="rounded-full bg-bronze px-5 py-2 text-sm font-medium text-cream-light transition-colors hover:bg-bronze-hover"
+              className="btn-primary rounded-2xl bg-peach-500 px-5 py-2 text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
             >
               Join waitlist
             </a>
@@ -83,7 +92,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="py-3 block text-base text-muted transition-colors hover:text-foreground"
+              className="py-3 block text-base text-foreground-muted transition-colors hover:text-foreground"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -91,13 +100,13 @@ export function Header() {
           ))}
           <a
             href="/#waitlist"
-            className="mt-2 rounded-full bg-bronze px-5 py-3 text-center text-sm font-medium text-cream-light transition-colors hover:bg-bronze-hover"
+            className="btn-primary mt-2 rounded-2xl bg-peach-500 px-5 py-3 text-center text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
             onClick={() => setMenuOpen(false)}
           >
             Join waitlist
           </a>
         </nav>
       </div>
-    </header>
+    </Wrapper>
   )
 }
