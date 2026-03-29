@@ -1,29 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { Source_Serif_4 } from 'next/font/google'
-import localFont from 'next/font/local'
+import { DM_Serif_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const sourceSerif = Source_Serif_4({
+const dmSerif = DM_Serif_Display({
+  weight: '400',
   subsets: ['latin'],
-  variable: '--font-source-serif',
+  variable: '--font-dm-serif',
   display: 'swap',
 })
 
-const cabinetGrotesk = localFont({
-  src: [
-    {
-      path: '../public/fonts/CabinetGrotesk-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/CabinetGrotesk-Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-cabinet',
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -42,7 +31,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#F5F0E8',
+  themeColor: '#F7F3EC',
   width: 'device-width',
   initialScale: 1,
 }
@@ -52,7 +41,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-background">
-      <body className={`${sourceSerif.variable} ${cabinetGrotesk.variable} font-sans antialiased`}>
+      <body className={`${dmSerif.variable} ${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

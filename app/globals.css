@@ -1,19 +1,34 @@
 @import 'tailwindcss';
 
 @theme inline {
-  --font-sans: var(--font-cabinet), system-ui, sans-serif;
-  --font-serif: var(--font-source-serif), 'Georgia', serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), 'Georgia', serif;
 
-  --color-background: #F5F0E8;
-  --color-foreground: #3D2B1F;
-  --color-cream-light: #FFFCF7;
-  --color-bronze: #8B6914;
-  --color-bronze-hover: #6B4F0E;
-  --color-gold-mist: #C9A227;
-  --color-muted: rgba(61, 43, 31, 0.6);
-  --color-muted-foreground: rgba(61, 43, 31, 0.3);
-  --color-border: rgba(61, 43, 31, 0.1);
+  /* Golden Onyx — Colors */
+  --color-background: #F7F3EC;
+  --color-surface: #FDF8F3;
+  --color-foreground: #2C2416;
+  --color-foreground-muted: rgba(44, 36, 22, 0.6);
+  --color-foreground-subtle: rgba(44, 36, 22, 0.3);
+  --color-peach-500: #D4935A;
+  --color-peach-600: #C47840;
+  --color-peach-700: #A86330;
+  --color-teal-600: #298282;
+  --color-coral: #D4785C;
+  --color-sage: #7BA68A;
+  --color-error: #F43F5E;
+  --color-warning: #F59E0B;
+  --color-success: #10B981;
+  --color-border: rgba(44, 36, 22, 0.08);
 
+  /* Warm amber-tinted shadows */
+  --shadow-xs: 0 1px 2px rgba(160, 110, 50, 0.04);
+  --shadow-sm: 0 1px 3px rgba(160, 110, 50, 0.06);
+  --shadow-md: 0 4px 12px rgba(160, 110, 50, 0.08);
+  --shadow-lg: 0 12px 32px rgba(160, 110, 50, 0.1);
+  --shadow-xl: 0 20px 40px -15px rgba(160, 110, 50, 0.12);
+
+  /* Animations (kept for non-Framer elements) */
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 0.6s ease both;
 }
@@ -23,10 +38,12 @@
     scroll-behavior: smooth;
   }
   * {
-    @apply border-border;
+    border-color: var(--color-border);
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
 }
 
@@ -37,7 +54,7 @@ body::after {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.25;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -48,7 +65,7 @@ body::after {
   }
 }
 
-/* Section transition — subtle warm divider */
+/* Section transition — subtle warm peach divider */
 .section-fade {
   position: relative;
 }
@@ -59,43 +76,7 @@ body::after {
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201, 162, 39, 0.15), transparent);
-}
-
-/* Scroll reveal base state */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Slide-in variants for zig-zag sections */
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-left.visible,
-.reveal-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Stagger delay via CSS custom property */
-.stagger {
-  transition-delay: calc(var(--index, 0) * 120ms);
+  background: linear-gradient(to right, transparent, rgba(212, 147, 90, 0.15), transparent);
 }
 
 /* Animation keyframes */
@@ -109,42 +90,7 @@ body::after {
   to { opacity: 1; }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Hero mesh gradient drift */
-@keyframes gradient-drift {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
-.hero-gradient {
-  background:
-    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(201, 162, 39, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 70% 60%, rgba(139, 105, 20, 0.04) 0%, transparent 70%);
-  background-size: 200% 200%;
-  animation: gradient-drift 25s ease-in-out infinite;
-}
-
-/* Chat bubble entrance */
-@keyframes chat-in {
-  from { opacity: 0; transform: translateY(10px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.chat-bubble {
-  opacity: 0;
-  animation: chat-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Typing indicator dots */
+/* Typing indicator dots — kept as CSS (simple infinite loop) */
 @keyframes typing-dot {
   0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
   30% { opacity: 1; transform: translateY(-2px); }
@@ -154,7 +100,7 @@ body::after {
 .typing-dot-2 { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
 .typing-dot-3 { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
 
-/* SVG line draw */
+/* SVG line draw — triggered by Framer Motion adding .visible */
 .line-draw {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -174,38 +120,38 @@ body::after {
   max-height: 400px;
 }
 
-/* Tactile button feedback */
-.bg-bronze {
+/* Tactile button feedback — peach buttons */
+.btn-primary {
   transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 1px 2px rgba(61, 43, 31, 0.08);
+  box-shadow: var(--shadow-sm);
 }
-.bg-bronze:hover:not(:disabled) {
+.btn-primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(139, 105, 20, 0.15);
+  box-shadow: var(--shadow-md);
 }
 button:active:not(:disabled),
 [role="button"]:active:not(:disabled) {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 0 0 rgba(61, 43, 31, 0);
+  box-shadow: var(--shadow-xs);
 }
 
 /* Nav link underline reveal */
-nav a:not(.bg-bronze) {
+nav a:not(.btn-primary) {
   position: relative;
 }
-nav a:not(.bg-bronze)::after {
+nav a:not(.btn-primary)::after {
   content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 0;
   height: 1px;
-  background: currentColor;
+  background: var(--color-peach-700);
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-nav a:not(.bg-bronze):hover::after {
+nav a:not(.btn-primary):hover::after {
   width: 100%;
 }
 
@@ -228,7 +174,7 @@ nav a:not(.bg-bronze):hover::after {
   animation: checkmark-draw 0.4s ease-out 0.3s both;
 }
 
-/* Hero Variant A — staggered float for layered cards */
+/* Hero — staggered float for glassmorphism cards */
 @keyframes layer-float {
   0%, 100% { transform: var(--layer-rotate) translateY(0px); }
   50% { transform: var(--layer-rotate) translateY(-6px); }
@@ -242,48 +188,17 @@ nav a:not(.bg-bronze):hover::after {
 .hero-layer:nth-child(2) { --layer-rotate: rotate(-2deg); animation-duration: 7s; animation-delay: 0.8s; }
 .hero-layer:nth-child(3) { --layer-rotate: rotate(0.5deg); animation-duration: 6.5s; animation-delay: 1.6s; }
 
-/* Hero Variant B — recording dot pulse */
-@keyframes recording-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-.recording-dot {
-  animation: recording-pulse 1.2s ease-in-out infinite;
-}
-
-/* Hero Variant C — signal ring pulse */
-@keyframes signal-pulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.5; }
-}
-.signal-pulse {
-  animation: signal-pulse 3s ease-in-out infinite;
-}
-.signal-center-glow {
-  filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.15));
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal,
-  .reveal-left,
-  .reveal-right {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .hero-gradient {
+  .hero-layer {
     animation: none;
   }
-  .animate-float {
+  .typing-dot-1, .typing-dot-2, .typing-dot-3 {
     animation: none;
-  }
-  .chat-bubble {
-    animation: none;
-    opacity: 1;
+    opacity: 0.5;
   }
   .line-draw {
     stroke-dashoffset: 0;
@@ -296,16 +211,6 @@ nav a:not(.bg-bronze):hover::after {
   .animate-checkmark {
     animation: none;
     stroke-dashoffset: 0;
-  }
-  .hero-layer {
-    animation: none;
-  }
-  .recording-dot {
-    animation: none;
-  }
-  .signal-pulse {
-    animation: none;
-    opacity: 0.3;
   }
   body::after {
     display: none;
