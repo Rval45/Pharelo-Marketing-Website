@@ -92,7 +92,7 @@ export function WaitlistForm({ id = 'waitlist-email' }: { id?: string }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email"
           disabled={loading}
-          className="h-14 flex-1 rounded-full border border-stone-300 bg-surface px-6 text-base text-foreground placeholder:text-foreground-subtle shadow-sm focus:outline-none focus:ring-2 focus:ring-peach-500/40 focus:ring-offset-2 focus:ring-offset-background sm:border-0 sm:bg-transparent sm:shadow-none sm:focus:ring-offset-0 disabled:opacity-50"
+          className="h-14 min-h-[56px] py-4 flex-1 rounded-full border border-stone-300 bg-white px-6 text-base text-foreground placeholder:text-foreground-subtle shadow-sm focus:outline-none focus:ring-2 focus:ring-peach-500/40 focus:ring-offset-2 focus:ring-offset-background sm:border-0 sm:bg-transparent sm:shadow-none sm:py-0 sm:min-h-0 sm:focus:ring-offset-0 disabled:opacity-50"
         />
         <button
           type="submit"
