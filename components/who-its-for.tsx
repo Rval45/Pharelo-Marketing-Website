@@ -24,9 +24,9 @@ const scenarios = [
 
 export function WhoItsFor() {
   return (
-    <section id="who-its-for" className="px-6 md:px-12 py-24 md:py-36">
+    <section id="who-its-for" className="px-6 md:px-12 py-14 md:py-36">
       <div className="mx-auto max-w-[1400px]">
-        <MotionWrapper className="mb-16">
+        <MotionWrapper className="mb-10 md:mb-16">
           <span className="inline-flex w-fit rounded-full bg-peach-500/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.8px] text-peach-700">
             Who it{'\u2019'}s for
           </span>
@@ -35,7 +35,7 @@ export function WhoItsFor() {
           </h2>
         </MotionWrapper>
 
-        <div className="flex flex-col gap-16 md:gap-24">
+        <div className="flex flex-col gap-10 md:gap-24">
           {scenarios.map((scenario, i) => {
             const imageOnRight = i % 2 === 0
             return (

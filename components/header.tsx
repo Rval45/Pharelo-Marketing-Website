@@ -44,8 +44,8 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <Logo size={28} />
-            <span className="text-lg font-serif text-foreground tracking-tight">
+            <Logo className="w-9 h-9 md:w-7 md:h-7" />
+            <span className="text-xl md:text-lg font-serif text-foreground tracking-tight">
               Pharelo
             </span>
           </Link>

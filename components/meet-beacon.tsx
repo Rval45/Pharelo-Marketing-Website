@@ -3,7 +3,7 @@ import { ChatDemo } from './chat-demo'
 
 export function MeetBeacon() {
   return (
-    <section id="beacon" className="px-6 md:px-12 py-24 md:py-36">
+    <section id="beacon" className="px-6 md:px-12 py-14 md:py-36">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
           <MotionWrapper>

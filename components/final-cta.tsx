@@ -4,7 +4,7 @@ import { WaitlistForm } from './waitlist-form'
 
 export function FinalCTA() {
   return (
-    <section id="waitlist" className="relative px-6 md:px-12 py-32 md:py-48 overflow-hidden">
+    <section id="waitlist" className="relative px-6 md:px-12 py-16 md:py-48 overflow-hidden">
       {/* Background photo — vignette fade into warm linen */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Image

@@ -108,14 +108,14 @@ const mockupComponents: Record<string, React.FC> = {
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="px-6 md:px-12 py-28 md:py-44">
+    <section id="how-it-works" className="px-6 md:px-12 py-16 md:py-44">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col gap-32 lg:gap-48">
+        <div className="flex flex-col gap-16 md:gap-32 lg:gap-48">
           {phases.map((phase) => {
             const MockupContent = mockupComponents[phase.mockup]
             const isLeft = phase.textSide === 'left'
             return (
-              <div key={phase.id} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+              <div key={phase.id} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <MotionWrapper
                   variant={isLeft ? 'fade-up' : 'slide-right'}
                   className={isLeft ? 'md:order-1' : 'md:order-2'}

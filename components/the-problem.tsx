@@ -9,7 +9,7 @@ const scenarios = [
 
 export function TheProblem() {
   return (
-    <section className="px-6 md:px-12 py-32 md:py-44">
+    <section className="px-6 md:px-12 py-16 md:py-44">
       <div className="mx-auto max-w-[1400px]">
         <div className="md:grid md:grid-cols-[1fr_1.8fr] md:gap-16 lg:gap-24">
           {/* Left — anchor phrase */}
@@ -20,10 +20,10 @@ export function TheProblem() {
           </MotionWrapper>
 
           {/* Right — scenarios */}
-          <div className="mt-12 md:mt-0 flex flex-col">
+          <div className="mt-8 md:mt-0 flex flex-col">
             {scenarios.map((text, i) => (
               <MotionWrapper key={i} variant="fade-up" staggerIndex={i}>
-                <div className="py-8 md:py-10 border-t border-border">
+                <div className="py-5 md:py-10 border-t border-border">
                   <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground/70">
                     {text}
                   </p>

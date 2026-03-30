@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2.5">
-              <Logo size={24} className="brightness-0 invert" />
+              <Logo className="w-6 h-6 brightness-0 invert" />
               <span className="text-base font-serif text-surface tracking-tight">
                 Pharelo
               </span>
