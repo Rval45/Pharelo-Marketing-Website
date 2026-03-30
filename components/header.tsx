@@ -23,6 +23,7 @@ export function Header() {
     { label: 'How it works', href: '/#how-it-works' },
     { label: 'Beacon', href: '/#beacon' },
     { label: 'Signals', href: '/#signals' },
+    { label: 'Blog', href: '/blog' },
   ]
 
   const Wrapper = prefersReduced ? 'header' : motion.header
@@ -52,15 +53,25 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-foreground-muted transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith('/#') ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-foreground-muted transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-foreground-muted transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <a
               href="/#waitlist"
               className="btn-primary rounded-2xl bg-peach-500 px-5 py-2 text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
@@ -88,16 +99,27 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col gap-1 px-6 py-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="py-3 block text-base text-foreground-muted transition-colors hover:text-foreground"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith('/#') ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className="py-3 block text-base text-foreground-muted transition-colors hover:text-foreground"
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="py-3 block text-base text-foreground-muted transition-colors hover:text-foreground"
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
             href="/#waitlist"
             className="btn-primary mt-2 rounded-2xl bg-peach-500 px-5 py-3 text-center text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
