@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer'
 export const metadata: Metadata = {
   title: 'Terms of Service \u2014 Pharelo',
   description: 'Terms governing the use of Pharelo.',
+  alternates: { canonical: 'https://pharelo.com/terms' },
 }
 
 const sections = [

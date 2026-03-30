@@ -8,6 +8,7 @@ import { SupportFAQ } from '@/components/support-faq'
 export const metadata: Metadata = {
   title: 'Support \u2014 Pharelo',
   description: 'Get help with Pharelo. Contact us or browse frequently asked questions.',
+  alternates: { canonical: 'https://pharelo.com/support' },
 }
 
 const faqs = [
@@ -18,9 +19,26 @@ const faqs = [
   { question: 'How can I share feedback or suggest a feature?', answer: 'We\u2019d love to hear from you. Email us directly at team@pharelo.com. Every piece of feedback helps shape the future of Pharelo.' },
 ]
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+}
+
 export default function SupportPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <main className="flex-1 pt-16">
         <div className="mx-auto max-w-[65ch] px-6 py-14 md:py-20">

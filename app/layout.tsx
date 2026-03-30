@@ -17,6 +17,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pharelo.com'),
   title: 'Pharelo — Walk in prepared. Walk out clear.',
   description:
     'Pharelo helps you prepare for medical appointments, capture what matters during visits, and understand everything after.',
@@ -28,6 +29,33 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  openGraph: {
+    title: 'Pharelo — Walk in prepared. Walk out clear.',
+    description:
+      'Pharelo helps you prepare for medical appointments, capture what matters during visits, and understand everything after.',
+    url: 'https://pharelo.com',
+    siteName: 'Pharelo',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Pharelo — Walk in prepared. Walk out clear.',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pharelo — Walk in prepared. Walk out clear.',
+    description:
+      'Pharelo helps you prepare for medical appointments, capture what matters during visits, and understand everything after.',
+    images: ['/images/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://pharelo.com',
+  },
 }
 
 export const viewport: Viewport = {
@@ -36,11 +64,51 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Pharelo',
+  description:
+    'Pharelo helps you prepare for medical appointments, capture what matters during visits, and understand everything after.',
+  url: 'https://pharelo.com',
+  logo: 'https://pharelo.com/images/Pharelo_Logo.webp',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'Customer Support',
+    email: 'team@pharelo.com',
+  },
+}
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Pharelo',
+  description:
+    'Medical appointment preparation, recording, and summary app. Organize your thoughts before visits, capture details during, and understand everything after.',
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'iOS',
+  url: 'https://pharelo.com',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/PreOrder',
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="bg-background">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema, softwareSchema]),
+          }}
+        />
+      </head>
       <body className={`${dmSerif.variable} ${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />

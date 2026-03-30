@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer'
 export const metadata: Metadata = {
   title: 'Privacy Policy \u2014 Pharelo',
   description: 'How Pharelo handles your data and protects your privacy.',
+  alternates: { canonical: 'https://pharelo.com/privacy' },
 }
 
 const sections = [

@@ -1,0 +1,34 @@
+# Pharelo
+
+> Pharelo helps you prepare for medical appointments, capture what matters during visits, and understand everything after.
+
+Pharelo is a mobile app (iOS) for patients and caregivers. It provides:
+
+- **Before**: Build a checklist of questions, symptoms, and topics for your appointment
+- **During**: Record your appointment with live transcription
+- **After**: Get a clear summary of what was discussed, decided, and what to do next
+
+## Key features
+
+- **Beacon**: An AI companion that surfaces personalized suggestions before visits and generates clear summaries after
+- **Signals**: Tracks health themes across appointments over time, revealing patterns a single visit can't show
+
+## Who it's for
+
+- People managing chronic conditions across multiple specialists
+- Caregivers coordinating appointments for a parent or loved one
+- Anyone facing a big specialist appointment
+
+## Important disclaimers
+
+- Pharelo is NOT a medical device
+- Pharelo does NOT provide medical advice, diagnosis, or treatment
+- Always consult a qualified healthcare provider
+
+## Links
+
+- Homepage: https://pharelo.com
+- Support: https://pharelo.com/support
+- Privacy policy: https://pharelo.com/privacy
+- Terms of service: https://pharelo.com/terms
+- Contact: team@pharelo.com
