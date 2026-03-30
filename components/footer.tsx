@@ -23,6 +23,14 @@ export function Footer() {
           <div className="flex gap-12">
             <div className="flex flex-col gap-0.5">
               <span className="text-xs font-semibold uppercase tracking-widest text-surface/40">
+                Resources
+              </span>
+              <Link href="/blog" className="py-1.5 text-sm text-surface/60 transition-colors hover:text-peach-500">
+                Blog
+              </Link>
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <span className="text-xs font-semibold uppercase tracking-widest text-surface/40">
                 Legal
               </span>
               <Link href="/privacy" className="py-1.5 text-sm text-surface/60 transition-colors hover:text-peach-500">
