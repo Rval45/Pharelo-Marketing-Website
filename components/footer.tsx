@@ -22,7 +22,7 @@ export function Footer() {
           {/* Links */}
           <div className="flex gap-12">
             <div className="flex flex-col gap-0.5">
-              <span className="text-xs font-semibold uppercase tracking-widest text-surface/40">
+              <span className="text-xs font-semibold uppercase tracking-widest text-surface/55">
                 Resources
               </span>
               <Link href="/blog" className="py-1.5 text-sm text-surface/60 transition-colors hover:text-peach-500">
@@ -30,7 +30,7 @@ export function Footer() {
               </Link>
             </div>
             <div className="flex flex-col gap-0.5">
-              <span className="text-xs font-semibold uppercase tracking-widest text-surface/40">
+              <span className="text-xs font-semibold uppercase tracking-widest text-surface/55">
                 Legal
               </span>
               <Link href="/privacy" className="py-1.5 text-sm text-surface/60 transition-colors hover:text-peach-500">
@@ -41,7 +41,7 @@ export function Footer() {
               </Link>
             </div>
             <div className="flex flex-col gap-0.5">
-              <span className="text-xs font-semibold uppercase tracking-widest text-surface/40">
+              <span className="text-xs font-semibold uppercase tracking-widest text-surface/55">
                 Contact
               </span>
               <Link href="/support" className="py-1.5 text-sm text-surface/60 transition-colors hover:text-peach-500">
@@ -59,7 +59,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-surface/10">
-          <p className="text-xs text-surface/40">
+          <p className="text-xs text-surface/55">
             &copy; {new Date().getFullYear()} Pharelo. All rights reserved.
           </p>
         </div>

@@ -9,7 +9,7 @@ const scenarios = [
 
 export function TheProblem() {
   return (
-    <section className="px-6 md:px-12 py-16 md:py-44">
+    <section className="px-6 md:px-12 py-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <div className="md:grid md:grid-cols-[1fr_1.8fr] md:gap-16 lg:gap-24">
           {/* Left — anchor phrase */}

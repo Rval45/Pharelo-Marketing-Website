@@ -7,12 +7,13 @@
   /* Golden Onyx — Colors */
   --color-background: #F7F3EC;
   --color-surface: #FDF8F3;
+  --color-onyx: #211B0F;
   --color-foreground: #2C2416;
-  --color-foreground-muted: rgba(44, 36, 22, 0.6);
-  --color-foreground-subtle: rgba(44, 36, 22, 0.3);
+  --color-foreground-muted: rgba(44, 36, 22, 0.74);
+  --color-foreground-subtle: rgba(44, 36, 22, 0.55);
   --color-peach-500: #D4935A;
   --color-peach-600: #C47840;
-  --color-peach-700: #A86330;
+  --color-peach-700: #935426;
   --color-teal-600: #298282;
   --color-coral: #D4785C;
   --color-sage: #7BA68A;
@@ -63,6 +64,34 @@ body::after {
   body::after {
     display: none;
   }
+}
+
+/* Dark "peak" section — high-contrast moment that breaks the page's tonal
+   monotony. NOTE: the theme uses `@theme inline`, so color utilities compile to
+   literal hex values (not var()). Re-mapping --color-* here would NOT affect
+   text, so dark-section text colors are set explicitly via these helper classes
+   and the inherited `color` below. */
+.section-dark {
+  background-color: var(--color-onyx);
+  color: #FBF6EE;
+}
+.on-dark-heading {
+  color: #FBF6EE;
+}
+.on-dark-body {
+  color: rgba(251, 246, 238, 0.74);
+}
+.section-dark .text-peach-700 {
+  color: #E9B687;
+}
+
+/* Warm radial glow — places a soft peach light source behind a focal element */
+.glow-peach::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 55% at 70% 40%, rgba(212, 147, 90, 0.22), transparent 70%);
 }
 
 /* Section transition — subtle warm peach divider */
@@ -127,6 +156,17 @@ body::after {
 }
 .mobile-menu.open {
   max-height: 400px;
+}
+
+/* Primary CTA — darker peach so white labels meet WCAG AA (5:1).
+   Defined as a plain class (not a theme token) because `@theme inline` does not
+   expose new tokens as usable utilities or :root vars. */
+.btn-cta {
+  background-color: #B85A22;
+  color: #fff;
+}
+.btn-cta:hover:not(:disabled) {
+  background-color: #9C4C1A;
 }
 
 /* Tactile button feedback — peach buttons */

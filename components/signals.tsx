@@ -1,4 +1,4 @@
-import { SignalsChart } from './signals-chart'
+import { HealthNotes } from './health-notes'
 import { MotionWrapper } from './motion-wrapper'
 
 export function Signals() {
@@ -19,7 +19,7 @@ export function Signals() {
           </MotionWrapper>
 
           <MotionWrapper variant="fade-up" delay={0.1}>
-            <SignalsChart />
+            <HealthNotes />
           </MotionWrapper>
         </div>
       </div>

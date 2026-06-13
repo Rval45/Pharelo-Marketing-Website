@@ -71,7 +71,7 @@ export function ChatDemo() {
               : 'bg-peach-500/10 text-foreground'
           }`}>
             {msg.sender === 'beacon' && (
-              <span className="inline-flex rounded-full bg-teal-600/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.8px] text-teal-600 mb-1.5">Beacon</span>
+              <span className="inline-flex rounded-full bg-teal-600/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.8px] text-[#176B6B] mb-1.5">Beacon</span>
             )}
             <p className="text-sm leading-relaxed">{msg.text}</p>
           </div>

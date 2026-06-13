@@ -24,7 +24,7 @@ const scenarios = [
 
 export function WhoItsFor() {
   return (
-    <section id="who-its-for" className="px-6 md:px-12 py-14 md:py-36">
+    <section id="who-its-for" className="px-6 md:px-12 py-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <MotionWrapper className="mb-10 md:mb-16">
           <span className="inline-flex w-fit rounded-full bg-peach-500/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.8px] text-peach-700">

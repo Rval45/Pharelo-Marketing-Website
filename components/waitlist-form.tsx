@@ -79,7 +79,7 @@ export function WaitlistForm({ id = 'waitlist-email' }: { id?: string }) {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-border sm:bg-surface sm:p-1.5"
+        className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-foreground/15 sm:bg-surface sm:p-1.5 sm:shadow-[0_10px_34px_-8px_rgba(160,110,50,0.28)]"
       >
         <label htmlFor={id} className="sr-only">
           Email address
@@ -97,7 +97,7 @@ export function WaitlistForm({ id = 'waitlist-email' }: { id?: string }) {
         <button
           type="submit"
           disabled={loading}
-          className="btn-primary h-14 rounded-full bg-peach-500 px-8 text-base font-semibold text-white tracking-[0.3px] hover:bg-peach-600 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn-primary btn-cta h-14 rounded-full px-8 text-base font-semibold tracking-[0.3px] disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {loading ? 'Joining\u2026' : 'Join the waitlist'}
         </button>

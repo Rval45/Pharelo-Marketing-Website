@@ -18,3 +18,4 @@ images-src/
 
 # Static export output
 out/
+.gstack/
