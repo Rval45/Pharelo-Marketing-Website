@@ -138,16 +138,6 @@ body::after {
 .typing-dot-2 { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
 .typing-dot-3 { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
 
-/* SVG line draw — triggered by Framer Motion adding .visible */
-.line-draw {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.visible .line-draw {
-  stroke-dashoffset: 0;
-}
-
 /* Mobile menu */
 .mobile-menu {
   max-height: 0;
@@ -338,9 +328,11 @@ nav a:not(.btn-primary):hover::after {
     animation: none;
     opacity: 0.5;
   }
-  .line-draw {
-    stroke-dashoffset: 0;
+  .mockup-lift {
     transition: none;
+  }
+  .mockup-lift:hover {
+    transform: none;
   }
   .animate-success {
     animation: none;

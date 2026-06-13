@@ -1,6 +1,6 @@
 export function AppMockup({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-[280px] transition-transform duration-500 ease-out md:hover:-translate-y-1.5">
+    <div className="mockup-lift mx-auto w-full max-w-[280px] transition-transform duration-500 ease-out md:hover:-translate-y-1.5">
       {/* Phone frame */}
       <div className="rounded-[2.5rem] bg-gradient-to-b from-surface to-background p-3 ring-1 ring-foreground/10 shadow-[0_30px_60px_-20px_rgba(160,110,50,0.35),0_8px_20px_-8px_rgba(44,36,22,0.18)]">
         {/* Dynamic island notch */}
