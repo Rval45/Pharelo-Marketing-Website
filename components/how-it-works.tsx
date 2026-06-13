@@ -40,7 +40,7 @@ function ChecklistMockup() {
     <div className="p-5 flex flex-col gap-3">
       <div className="flex items-center gap-2 mb-2">
         <CheckSquare size={16} className="text-peach-500" weight="fill" />
-        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-subtle">Appointment prep</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-muted">Appointment prep</span>
       </div>
       {items.map((item, i) => (
         <div key={i} className="flex items-start gap-3">
@@ -51,7 +51,7 @@ function ChecklistMockup() {
               </svg>
             )}
           </div>
-          <span className={`text-sm leading-snug ${item.checked ? 'text-foreground-subtle line-through' : 'text-foreground'}`}>{item.text}</span>
+          <span className={`text-sm leading-snug ${item.checked ? 'text-foreground-muted line-through' : 'text-foreground'}`}>{item.text}</span>
         </div>
       ))}
     </div>
@@ -63,7 +63,7 @@ function RecordingMockup() {
     <div className="p-5 flex flex-col gap-4">
       <div className="flex items-center gap-2 mb-1">
         <Waveform size={16} className="text-peach-500" weight="fill" />
-        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-subtle">Recording</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-muted">Recording</span>
       </div>
       <div className="flex items-end justify-center gap-[3px] h-12">
         {[0.3, 0.6, 0.9, 0.5, 0.8, 1, 0.7, 0.4, 0.85, 0.55, 0.75, 0.95, 0.45, 0.65, 0.35, 0.8, 0.5, 0.7].map((h, i) => (
@@ -84,15 +84,15 @@ function SummaryMockup() {
     <div className="p-5 flex flex-col gap-3">
       <div className="flex items-center gap-2 mb-1">
         <ListChecks size={16} className="text-peach-500" weight="fill" />
-        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-subtle">Visit summary</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.8px] text-foreground-muted">Visit summary</span>
       </div>
       <div className="flex flex-col gap-2.5">
         <div className="rounded-lg bg-surface p-3 border border-border">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.8px] text-foreground-subtle mb-1">Key takeaway</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.8px] text-foreground-muted mb-1">Key takeaway</p>
           <p className="text-xs text-foreground leading-relaxed">Cholesterol slightly elevated. Dosage adjustment recommended.</p>
         </div>
         <div className="rounded-lg bg-surface p-3 border border-border">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.8px] text-foreground-subtle mb-1">Action items</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.8px] text-foreground-muted mb-1">Action items</p>
           <p className="text-xs text-foreground leading-relaxed">Follow-up blood work in 3 months. New prescription starts Monday.</p>
         </div>
       </div>
@@ -108,9 +108,9 @@ const mockupComponents: Record<string, React.FC> = {
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="px-6 md:px-12 py-16 md:py-44">
+    <section id="how-it-works" className="px-6 md:px-12 py-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col gap-16 md:gap-32 lg:gap-48">
+        <div className="flex flex-col gap-20 md:gap-28">
           {phases.map((phase) => {
             const MockupContent = mockupComponents[phase.mockup]
             const isLeft = phase.textSide === 'left'

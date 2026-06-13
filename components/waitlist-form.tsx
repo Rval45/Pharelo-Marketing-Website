@@ -79,7 +79,7 @@ export function WaitlistForm({ id = 'waitlist-email' }: { id?: string }) {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-border sm:bg-surface sm:p-1.5"
+        className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-full sm:border sm:border-foreground/15 sm:bg-surface sm:p-1.5 sm:shadow-[0_10px_34px_-8px_rgba(160,110,50,0.28)]"
       >
         <label htmlFor={id} className="sr-only">
           Email address
@@ -92,12 +92,12 @@ export function WaitlistForm({ id = 'waitlist-email' }: { id?: string }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email"
           disabled={loading}
-          className="h-14 min-h-[56px] py-4 flex-1 rounded-full border border-stone-300 bg-white px-6 text-base text-foreground placeholder:text-foreground-subtle shadow-sm focus:outline-none focus:ring-2 focus:ring-peach-500/40 focus:ring-offset-2 focus:ring-offset-background sm:border-0 sm:bg-transparent sm:shadow-none sm:py-0 sm:min-h-0 sm:focus:ring-offset-0 disabled:opacity-50"
+          className="h-14 min-h-[56px] py-4 flex-1 rounded-full border border-stone-300 bg-white px-6 text-base text-foreground placeholder:text-foreground-muted shadow-sm focus:outline-none focus:ring-2 focus:ring-peach-500/40 focus:ring-offset-2 focus:ring-offset-background sm:border-0 sm:bg-transparent sm:shadow-none sm:py-0 sm:min-h-0 sm:focus:ring-offset-0 disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={loading}
-          className="btn-primary h-14 rounded-full bg-peach-500 px-8 text-base font-semibold text-white tracking-[0.3px] hover:bg-peach-600 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn-primary btn-cta h-14 rounded-full px-8 text-base font-semibold tracking-[0.3px] disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {loading ? 'Joining\u2026' : 'Join the waitlist'}
         </button>

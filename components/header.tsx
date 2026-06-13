@@ -74,7 +74,7 @@ export function Header() {
             )}
             <a
               href="/#waitlist"
-              className="btn-primary rounded-2xl bg-peach-500 px-5 py-2 text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
+              className="btn-primary btn-cta rounded-2xl px-5 py-2 text-sm font-semibold tracking-[0.3px]"
             >
               Join waitlist
             </a>
@@ -122,7 +122,7 @@ export function Header() {
           )}
           <a
             href="/#waitlist"
-            className="btn-primary mt-2 rounded-2xl bg-peach-500 px-5 py-3 text-center text-sm font-semibold text-white tracking-[0.3px] hover:bg-peach-600"
+            className="btn-primary btn-cta mt-2 rounded-2xl px-5 py-3 text-center text-sm font-semibold tracking-[0.3px]"
             onClick={() => setMenuOpen(false)}
           >
             Join waitlist
